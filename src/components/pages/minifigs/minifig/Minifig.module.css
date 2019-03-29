@@ -1,0 +1,13 @@
+.picture {
+    width: auto;
+    max-width: 95%;
+    max-height: 200px;
+}
+
+.paper {
+    text-align: center;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    height: calc(100% - 1rem);
+}

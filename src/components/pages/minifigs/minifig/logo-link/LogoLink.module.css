@@ -1,0 +1,9 @@
+.icon img {
+    height: 2rem;
+    width: 2rem;
+}
+
+.icon {
+    padding: 6px !important;
+    margin: 0 0.5rem !important;
+}

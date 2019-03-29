@@ -1,0 +1,22 @@
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
+import minifigsReducer from "./minifigs";
+import { routerMiddleware, connectRouter } from 'connected-react-router'
+import { createBrowserHistory } from 'history';
+
+export const history = createBrowserHistory();
+
+const rootReducer = combineReducers({
+  router: connectRouter(history),
+  minifigs: minifigsReducer
+});
+
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(
+    applyMiddleware(thunk, routerMiddleware(history)),
+  )
+);
+
+export default store;
