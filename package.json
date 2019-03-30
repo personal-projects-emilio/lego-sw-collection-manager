@@ -9,6 +9,8 @@
     "connected-react-router": "^6.3.2",
     "dot-prop-immutable": "^1.5.0",
     "prop-types": "^15.7.2",
+    "rc-pagination": "^1.17.13",
+    "rc-select": "^9.0.2",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-redux": "^6.0.1",

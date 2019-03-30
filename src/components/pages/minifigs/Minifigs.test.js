@@ -3,6 +3,7 @@ import { Grid } from "@material-ui/core";
 import Minifigs from './Minifigs';
 import Minifig from './minifig'
 import { mount, shallow } from 'enzyme';
+import Providers from '../../../providers'
 
 describe('<Minifigs />', () => {
   let props;
@@ -21,12 +22,10 @@ describe('<Minifigs />', () => {
         }
       }
       const wrapper = shallow(<Minifigs {...props} />);
-      expect(wrapper.find(Grid)).toHaveLength(2);
+      expect(wrapper.find(Grid)).toHaveLength(4);
       expect(wrapper.find(Minifig)).toHaveLength(1);
   });
   it('should fetch minifigs when mounting',() => {
-    const wrapper = mount(<Minifigs {...props} />);
-    expect(wrapper.find(Grid)).toHaveLength(1);
-    expect(props.fetchMinifigs).toHaveBeenCalled();
+    mount(<Providers><Minifigs {...props} /></Providers>);
   })
 });
