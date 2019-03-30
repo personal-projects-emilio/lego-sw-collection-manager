@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import bricklinkLogo from '../../../../../assets/images/logo/bricklink.png';
 import bricksetLogo from '../../../../../assets/images/logo/brickset.png';
 import { IconButton } from '@material-ui/core';
@@ -18,6 +19,11 @@ export const logoLink = (props) => {
 				<img alt={`${type}-logo`} src={image} />
 		</IconButton>
 	);
+}
+
+logoLink.propTypes = {
+	reference: PropTypes.string.isRequired,
+	type: PropTypes.string.isRequired
 }
 
 export default logoLink;
