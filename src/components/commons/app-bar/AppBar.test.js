@@ -7,7 +7,7 @@ describe('<AppBar />', () => {
   it('should render the AppBar', () => {
     const props = {
       location: {
-        pathname: '/counter'
+        pathname: '/minifigs'
       },
       classes: {
         fullHeight: 'fullHeight',

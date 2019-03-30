@@ -39,6 +39,7 @@
       "src/**/*.{js,jsx}",
       "!src/serviceWorker.js",
       "!src/setupTests.js",
+      "!src/axios.js",
       "!src/**/*.container.{js,jsx}",
       "!src/store/**/types.{js,jsx}",
       "!src/**/index.{js,jsx}",

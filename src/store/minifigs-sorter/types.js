@@ -1,0 +1,9 @@
+export const types = {
+    SET: {
+        ACTIVE_PAGE: 'SET.ACTIVE_PAGE',
+        NUMBER_PER_PAGE: 'SET.NUMBER_PER_PAGE',
+        SHOW: 'SET.SHOW',
+        'TAG_SELECTED': 'SET.TAG_SELECTED',
+        'CHARACNAME_SELECTED': 'SET.CHARACNAME_SELECTED'
+    }
+}
