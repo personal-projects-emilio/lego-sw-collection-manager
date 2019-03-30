@@ -1,26 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Divider, Button } from "@material-ui/core";
+import { Divider, Chip } from "@material-ui/core";
 
 export const nameAndTags = props => {
   const { characterName, classes, tags } = props;
   return (
     <>
       <Divider variant="fullWidth" />
-      <Button classes={{ root: classes.button }} variant="contained">
-        {characterName}
-      </Button>
+      <Chip
+        label={characterName}
+        classes={{root: classes.chip}}
+      />
       {tags.length > 0 && (
         <>
           <Divider variant="fullWidth" />
           {tags.map(tag => (
-            <Button 
-              key={`${characterName}-${tag}`} 
-              classes={{ root: classes.button }}
-              variant="contained"
-            >
-              {tag}
-            </Button>
+            <Chip 
+              key={`${characterName}-${tag}`}
+              label={tag}
+              classes={{root: classes.chip}}
+            />
           ))}
         </>
       )}
