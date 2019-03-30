@@ -3,7 +3,7 @@ import { types } from ".";
 const initialState = {
     options: {
         show: ['all', 'owned', 'missing'],
-        nbPerPages: [25, 50, 100, 200]
+        nbPerPages: ['25', '50', '100', '200']
     },
     activePage: 1,
     numberPerPage: 100,
