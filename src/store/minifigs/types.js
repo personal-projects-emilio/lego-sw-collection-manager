@@ -1,3 +1,7 @@
 export const types = {
-    SET_MINIFIGS: 'SET_MINIFIGS'
+    SET: {
+        MINIFIGS: 'SET.MINIFIGS',
+        STATISTICS: 'SET.STATISTICS',
+        TAGS_AND_CHARACNAMES: 'SET.TAGS_AND_CHARACNAMES'
+    }
 }
