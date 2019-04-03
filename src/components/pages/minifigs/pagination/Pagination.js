@@ -5,6 +5,7 @@ import Select from 'rc-select';
 import locale from 'rc-pagination/lib/locale/en_US';
 import './rc-pagination.css';
 import 'rc-select/assets/index.css';
+import { Grid } from "@material-ui/core";
 
 export const pagination = props => {
   const { activePage, setActivePage } = props;
@@ -15,32 +16,33 @@ export const pagination = props => {
   }
 
   const totalHandler = (total, range) => {
-    // if (total === 0) {
-    //   return ''
-    // } else if (total <= range[1]) {
-    //   return `${range[0]} - ${range[1]} minifigs`
-    // } else {
+    if (total === 0) {
+      return ''
+    } else if (total <= range[1] && range[0] === 1) {
+      return `${range[0]} - ${range[1]} minifigs`
+    } else {
       return `${range[0]} - ${range[1]} of ${total} minifigs`
-    // }
+    }
   }
 
   return (
-    <Pagination
-      //active page
-      current={props.activePage}
-      onChange={props.setActivePage}
-      // Nb per page options
-      showSizeChanger={1056 > 0}
-      pageSizeOptions={props.nbPerPagesOptions}
-      onShowSizeChange={sizeHandler}
-      selectComponentClass={Select}
-      pageSize={props.numberPerPage}
-      locale={locale}
-      // total
-      showTotal={totalHandler}
-      showLessItems
-      total={1056}
-    />
+    <Grid item xs={12}>
+      <Pagination
+        //active page
+        current={props.activePage}
+        onChange={props.setActivePage}
+        // Nb per page options
+        showSizeChanger={props.total > 0}
+        pageSizeOptions={props.nbPerPagesOptions}
+        onShowSizeChange={sizeHandler}
+        selectComponentClass={Select}
+        pageSize={props.numberPerPage}
+        locale={locale}
+        // total
+        showTotal={totalHandler}
+        total={props.total}
+      />
+    </Grid>
   )
 }
 
@@ -49,7 +51,8 @@ pagination.propTypes = {
   numberPerPage: PropTypes.number.isRequired,
   nbPerPagesOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
   setActivePage: PropTypes.func.isRequired,
-  setNumberPerPage: PropTypes.func.isRequired
+  setNumberPerPage: PropTypes.func.isRequired,
+  total: PropTypes.number.isRequired
 }
 
 export default pagination;
