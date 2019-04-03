@@ -11,10 +11,10 @@ export const nameAndTags = props => {
         label={characterName}
         classes={{root: classes.chip}}
       />
-      {tags.length > 0 && (
+      {tags && tags.length > 0 && (
         <>
           <Divider variant="fullWidth" />
-          {tags.map(tag => (
+          {tags.sort().map(tag => (
             <Chip 
               key={`${characterName}-${tag}`}
               label={tag}
