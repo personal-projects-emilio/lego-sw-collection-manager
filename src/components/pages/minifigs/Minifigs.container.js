@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { fetchMinifigs } from '../../../store/minifigs'
 
 const mapStateToProps = state => ({
-    minifigs: state.minifigs.minifigs
+    minifigs: state.minifigs.minifigs,
+    activePage: state.minifigsSorter.activePage,
+    numberPerPage: state.minifigsSorter.numberPerPage,
 });
 
 const mapDispatchToProps = dispatch => ({
