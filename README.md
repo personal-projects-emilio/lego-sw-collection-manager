@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Mohandor/lego-sw-collection-manager.svg?branch=master)](https://travis-ci.com/Mohandor/lego-sw-collection-manager)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -16,6 +18,10 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run test:coverage`
+
+Launches the tests with a coverage report that can be found in /coverage/lcov-report/index.html.
 
 ### `npm run build`
 
