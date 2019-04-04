@@ -41,6 +41,7 @@ export const pagination = props => {
         // total
         showTotal={totalHandler}
         total={props.total}
+        simple={props.isSmall}
       />
     </Grid>
   )
@@ -52,7 +53,8 @@ pagination.propTypes = {
   nbPerPagesOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
   setActivePage: PropTypes.func.isRequired,
   setNumberPerPage: PropTypes.func.isRequired,
-  total: PropTypes.number.isRequired
+  total: PropTypes.number.isRequired,
+  isSmall: PropTypes.bool.isRequired
 }
 
 export default pagination;

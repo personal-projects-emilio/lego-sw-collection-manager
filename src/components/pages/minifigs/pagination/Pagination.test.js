@@ -11,7 +11,8 @@ describe('<Pagination />', () => {
     nbPerPagesOptions: ['100', '200'],
     setActivePage: jest.fn(),
     setNumberPerPage: jest.fn(),
-    total: 188
+    total: 188,
+    isSmall: false
   }
   it('should render the pagination', () => {
       const wrapper = shallow(<CustomPagination {...props} />);
