@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/Mohandor/lego-sw-collection-manager.svg?branch=master)](https://travis-ci.com/Mohandor/lego-sw-collection-manager)
+[![Build Status](https://travis-ci.com/Mohandor/lego-sw-collection-manager.svg?branch=master)](https://travis-ci.com/Mohandor/lego-sw-collection-manager) [![codecov](https://codecov.io/gh/Mohandor/lego-sw-collection-manager/branch/master/graph/badge.svg)](https://codecov.io/gh/Mohandor/lego-sw-collection-manager)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
