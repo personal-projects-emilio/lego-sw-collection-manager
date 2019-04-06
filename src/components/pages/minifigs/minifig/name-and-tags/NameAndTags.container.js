@@ -1,5 +1,7 @@
 import nameAndTags from './NameAndTags';
 import { withStyles } from '@material-ui/core';
+import { connect } from 'react-redux';
+import {setTagSelected, setCharacNameSelected } from '../../../../../store/minifigs-sorter';
 
 const styles = () => ({
     chip: {
@@ -8,6 +10,16 @@ const styles = () => ({
         height: 'auto',
         padding: '6px 0'
     }
-})
+});
 
-export default withStyles(styles)(nameAndTags);
+const mapStateToProps = state => ({
+    tagSelected: state.minifigsSorter.tagSelected,
+    characNameSelected: state.minifigsSorter.characNameSelected,
+});
+
+const mapDispatchToProps = dispatch => ({
+    setTagSelected: tag => dispatch(setTagSelected(tag)),
+    setCharacNameSelected: characName => dispatch(setCharacNameSelected(characName)),
+});
+
+export default withStyles(styles)(connect(mapStateToProps,mapDispatchToProps)(nameAndTags));
