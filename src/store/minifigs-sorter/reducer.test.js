@@ -55,24 +55,50 @@ describe('reducer/minifigsSorter', () => {
     });
 
     it('should set the tagSelected', () => {
+        initialState.characNameSelected = 'Boba Fett';
         const action = {
             type: types.SET.TAG_SELECTED,
             tagSelected: 'Jedi'
         };
         expect(reducer(initialState, action)).toEqual({
             ...initialState,
+            characNameSelected: null,
             tagSelected: 'Jedi'
+        });
+    });
+
+    it('should reset the tag selected', () => {
+        const action = {
+            type: types.RESET.TAG_SELECTED,
+        };
+        initialState.tagSelected = 'Bounty Hunter';
+        expect(reducer(initialState, action)).toEqual({
+            ...initialState,
+            tagSelected: null
         });
     });
 
     it('should set the characNameSelected', () => {
         const action = {
             type: types.SET.CHARACNAME_SELECTED,
-            characNameSelected: 'Dath Maul'
+            characNameSelected: 'Darth Maul'
         };
+        initialState.tagSelected = 'Sith';
         expect(reducer(initialState, action)).toEqual({
             ...initialState,
-            characNameSelected: 'Dath Maul'
+            tagSelected: null,
+            characNameSelected: 'Darth Maul'
+        });
+    });
+
+    it('should reset the characNameSelected', () => {
+        const action = {
+            type: types.RESET.CHARACNAME_SELECTED,
+        };
+        initialState.characNameSelected = 'Darth Vader'
+        expect(reducer(initialState, action)).toEqual({
+            ...initialState,
+            characNameSelected: null
         });
     });
 });

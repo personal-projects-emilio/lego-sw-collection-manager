@@ -24,10 +24,16 @@ const counterReducer = (state = initialState, action) => {
             return {...state, show: action.show}
         }
         case types.SET.TAG_SELECTED : {
-            return {...state, tagSelected: action.tagSelected}
+            return {...state, tagSelected: action.tagSelected, characNameSelected: null}
+        }
+        case types.RESET.TAG_SELECTED : {
+            return {...state, tagSelected: null}
         }
         case types.SET.CHARACNAME_SELECTED : {
-            return {...state, characNameSelected: action.characNameSelected}
+            return {...state, characNameSelected: action.characNameSelected, tagSelected: null}
+        }
+        case types.RESET.CHARACNAME_SELECTED : {
+            return {...state, characNameSelected: null}
         }
         default:
             return state;
