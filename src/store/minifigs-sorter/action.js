@@ -2,25 +2,33 @@ import { types } from '.';
 
 export const setActivePage = activePage => ({
     type: types.SET.ACTIVE_PAGE,
-    activePage,
+    activePage
 });
 
 export const setNumberPerPage = numberPerPage => ({
     type: types.SET.NUMBER_PER_PAGE,
-    numberPerPage,
+    numberPerPage
 });
 
 export const setShow = show => ({
     type: types.SET.SHOW,
-    show,
+    show
 });
 
 export const setTagSelected = tagSelected => ({
     type: types.SET.TAG_SELECTED,
-    tagSelected,
+    tagSelected
 });
 
-export const setCharacNameSelected = characName => ({
+export const setCharacNameSelected = characNameSelected => ({
     type: types.SET.CHARACNAME_SELECTED,
-    characName,
+    characNameSelected
+});
+
+export const resetTagSelected = () => ({
+    type: types.RESET.TAG_SELECTED,
+});
+
+export const resetCharcNameSelected = () => ({
+    type: types.RESET.CHARACNAME_SELECTED,
 });
