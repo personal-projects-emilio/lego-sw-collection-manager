@@ -6,7 +6,8 @@ export {
   setTagSelected,
   setCharacNameSelected,
   resetTagSelected,
-  resetCharcNameSelected
+  resetCharcNameSelected,
+  manageSearchParams
 } from './action';
 export { types } from './types';
 export default minifigsSorterReducer;
