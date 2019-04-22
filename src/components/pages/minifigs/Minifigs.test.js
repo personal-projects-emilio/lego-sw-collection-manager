@@ -13,6 +13,7 @@ describe('<Minifigs />', () => {
       fetchMinifigs: jest.fn(),
       activePage: 1,
       numberPerPage: 1,
+      manageSearchParams: jest.fn()
     }
   })
   it('should render the minifigs page', () => {
@@ -24,7 +25,7 @@ describe('<Minifigs />', () => {
     mount(<Providers><Minifigs {...props} /></Providers>);
     expect(props.fetchMinifigs).toHaveBeenCalled();
   })
-  it('should show the minifigs',() => {
+  it('should show the minifigs and manage the search params',() => {
     props.minifigs = {
       sw0001: {
         name: 'test',
@@ -40,6 +41,7 @@ describe('<Minifigs />', () => {
       }
     }
     const wrapper = mount(<Providers><Minifigs {...props} /></Providers>);
+    expect(props.manageSearchParams).toHaveBeenCalled();
     expect(wrapper.find(Minifig)).toHaveLength(1);
 
   });

@@ -1,6 +1,7 @@
 import Minifigs from './Minifigs';
 import { connect } from 'react-redux';
-import { fetchMinifigs } from '../../../store/minifigs'
+import { fetchMinifigs } from '../../../store/minifigs';
+import { manageSearchParams } from '../../../store/minifigs-sorter';
 
 const mapStateToProps = state => ({
     minifigs: state.minifigs.minifigs,
@@ -9,7 +10,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchMinifigs: () => dispatch(fetchMinifigs())
+    fetchMinifigs: () => dispatch(fetchMinifigs()),
+    manageSearchParams: () => dispatch(manageSearchParams())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Minifigs);

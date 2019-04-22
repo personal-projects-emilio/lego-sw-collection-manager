@@ -20,26 +20,90 @@ describe('action/minifigs-sorter', () => {
             show: 'missing'
         });
     });
-    it('should return the setTagSelected action', () => {
-        expect(actions.setTagSelected('Jedi')).toEqual({
-            type: types.SET.TAG_SELECTED,
-            tagSelected: 'Jedi'
-        });
+    it('should set the character name', () => {
+        const dispatch = jest.fn();
+        const getState = jest.fn(() => ({
+            router: {
+                location: {
+                    search: '?tag=CIS'
+                }
+            }
+        }))
+        actions.setCharacNameSelected('Battle Droid')(dispatch, getState);
+        expect(getState).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
     });
-    it('should return the setCharacNameSelected action', () => {
-        expect(actions.setCharacNameSelected('Battle Droid')).toEqual({
-            type: types.SET.CHARACNAME_SELECTED,
-            characNameSelected: 'Battle Droid'
-        });
+    it('should reset the character name', () => {
+        const dispatch = jest.fn();
+        const getState = jest.fn(() => ({
+            router: {
+                location: {
+                    search: '?characterName=Han+Solo'
+                }
+            }
+        }))
+        actions.resetCharcNameSelected()(dispatch, getState);
+        expect(getState).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
     });
-    it('should return the resetTagSelected action', () => {
-        expect(actions.resetTagSelected()).toEqual({
-            type: types.RESET.TAG_SELECTED,
-        });
+    it('should set the tag', () => {
+        const dispatch = jest.fn();
+        const getState = jest.fn(() => ({
+            router: {
+                location: {
+                    search: '?characterName=Boba+Fett&show=owned'
+                }
+            }
+        }))
+        actions.setTagSelected('Jedi')(dispatch, getState);
+        expect(getState).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
     });
-    it('should return the resetCharcNameSelected action', () => {
-        expect(actions.resetCharcNameSelected()).toEqual({
-            type: types.RESET.CHARACNAME_SELECTED,
-        });
+    it('should reset the tag selected', () => {
+        const dispatch = jest.fn();
+        const getState = jest.fn(() => ({
+            router: {
+                location: {
+                    search: '?tag=CIS&show=missing'
+                }
+            }
+        }))
+        actions.resetTagSelected()(dispatch, getState)
+        expect(getState).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
+    });
+    it('should manage the search parameters for characterName and show', () => {
+        const dispatch = jest.fn();
+        const getState = jest.fn(() => ({
+            router: {
+                location: {
+                    search: '?tag=CIS&characterName=Han+Solo&show=missing'
+                }
+            },
+            minifigsSorter: {
+                options: {
+                    show: ['all', 'missing', 'owned']
+                }
+            }
+        }))
+        actions.manageSearchParams()(dispatch, getState);
+        expect(dispatch).toHaveBeenCalledTimes(3);
+    });
+    it('should manage the search parameters for tag', () => {
+        const dispatch = jest.fn();
+        const getState = jest.fn(() => ({
+            router: {
+                location: {
+                    search: '?tag=CIS&tag=shouldNotExist'
+                }
+            },
+            minifigsSorter: {
+                options: {
+                    show: ['all', 'missing', 'owned']
+                }
+            }
+        }))
+        actions.manageSearchParams()(dispatch, getState);
+        expect(dispatch).toHaveBeenCalledTimes(2);
     });
 });
