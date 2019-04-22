@@ -14,10 +14,38 @@ describe('action/minifigs-sorter', () => {
             numberPerPage: 200
         });
     });
-    it('should return the setShow action', () => {
-        expect(actions.setShow('missing')).toEqual({
+    it('should set show', () => {
+        const dispatch = jest.fn();
+        const getState = jest.fn(() => ({
+            router: {
+                location: {
+                    search: ''
+                }
+            }
+        }));
+        actions.setShow('missing')(dispatch, getState);
+        expect(getState).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
             type: types.SET.SHOW,
             show: 'missing'
+        });
+    });
+    it('should remove the show param', () => {
+        const dispatch = jest.fn();
+        const getState = jest.fn(() => ({
+            router: {
+                location: {
+                    search: '?show=missing'
+                }
+            }
+        }));
+        actions.setShow('all')(dispatch, getState);
+        expect(getState).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+            type: types.SET.SHOW,
+            show: 'all'
         });
     });
     it('should set the character name', () => {
