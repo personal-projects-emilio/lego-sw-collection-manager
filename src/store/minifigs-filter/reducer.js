@@ -12,7 +12,7 @@ const initialState = {
     characNameSelected: null
 };
 
-const counterReducer = (state = initialState, action) => {
+const minifigsFilterReducer = (state = initialState, action) => {
     switch ( action.type ) {
         case types.SET.ACTIVE_PAGE : {
             return {...state, activePage: action.activePage}
@@ -40,4 +40,4 @@ const counterReducer = (state = initialState, action) => {
     }
 };
 
-export default counterReducer;
+export default minifigsFilterReducer;

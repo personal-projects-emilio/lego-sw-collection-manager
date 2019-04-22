@@ -1,12 +1,12 @@
 import Pagination from './Pagination';
 import withSizes from 'react-sizes'
 import { connect } from 'react-redux';
-import { setActivePage, setNumberPerPage } from '../../../../store/minifigs-sorter';
+import { setActivePage, setNumberPerPage } from '../../../../store/minifigs-filter';
 
 const mapStateToProps = state => ({
-  activePage: state.minifigsSorter.activePage,
-  numberPerPage: state.minifigsSorter.numberPerPage,
-  nbPerPagesOptions: state.minifigsSorter.options.nbPerPages,
+  activePage: state.minifigsFilter.activePage,
+  numberPerPage: state.minifigsFilter.numberPerPage,
+  nbPerPagesOptions: state.minifigsFilter.options.nbPerPages,
 });
 
 const mapDispatchToProps = dispatch => ({
