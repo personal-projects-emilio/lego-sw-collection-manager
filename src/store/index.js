@@ -4,14 +4,14 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { routerMiddleware, connectRouter } from 'connected-react-router'
 import { createBrowserHistory } from 'history';
 import minifigsReducer from "./minifigs";
-import minifigsSorterReducer from "./minifigs-sorter";
+import minifigsFilterReducer from "./minifigs-filter";
 
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
   router: connectRouter(history),
   minifigs: minifigsReducer,
-  minifigsSorter: minifigsSorterReducer
+  minifigsFilter: minifigsFilterReducer
 });
 
 const store = createStore(

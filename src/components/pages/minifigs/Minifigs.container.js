@@ -1,12 +1,12 @@
 import Minifigs from './Minifigs';
 import { connect } from 'react-redux';
 import { fetchMinifigs } from '../../../store/minifigs';
-import { manageSearchParams } from '../../../store/minifigs-sorter';
+import { manageSearchParams } from '../../../store/minifigs-filter';
 
 const mapStateToProps = state => ({
     minifigs: state.minifigs.minifigs,
-    activePage: state.minifigsSorter.activePage,
-    numberPerPage: state.minifigsSorter.numberPerPage,
+    activePage: state.minifigsFilter.activePage,
+    numberPerPage: state.minifigsFilter.numberPerPage,
 });
 
 const mapDispatchToProps = dispatch => ({

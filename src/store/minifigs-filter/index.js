@@ -1,4 +1,4 @@
-import minifigsSorterReducer from './reducer'
+import minifigsFilterReducer from './reducer'
 export {
   setActivePage,
   setNumberPerPage,
@@ -10,4 +10,4 @@ export {
   manageSearchParams
 } from './action';
 export { types } from './types';
-export default minifigsSorterReducer;
+export default minifigsFilterReducer;
