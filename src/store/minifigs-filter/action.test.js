@@ -1,7 +1,7 @@
 import { types } from '.';
 import * as actions from './action';
 
-describe('action/minifigs-sorter', () => {
+describe('minifigs-filter/action', () => {
     it('should return the setActivePage action', () => {
         expect(actions.setActivePage(2)).toEqual({
             type: types.SET.ACTIVE_PAGE,
@@ -108,7 +108,7 @@ describe('action/minifigs-sorter', () => {
                     search: '?tag=CIS&characterName=Han+Solo&show=missing'
                 }
             },
-            minifigsSorter: {
+            minifigsFilter: {
                 options: {
                     show: ['all', 'missing', 'owned']
                 }
@@ -125,7 +125,7 @@ describe('action/minifigs-sorter', () => {
                     search: '?tag=CIS&tag=shouldNotExist'
                 }
             },
-            minifigsSorter: {
+            minifigsFilter: {
                 options: {
                     show: ['all', 'missing', 'owned']
                 }

@@ -89,8 +89,8 @@ export const resetTagSelected = () => (dispatch, getState) => {
 export const manageSearchParams = () => (dispatch, getState) => {
     const state = getState();
     const search = state.router.location.search;
-    const showOptions = state.minifigsSorter.options.show;
-    const selectedShow = state.minifigsSorter.show;
+    const showOptions = state.minifigsFilter.options.show;
+    const selectedShow = state.minifigsFilter.show;
     const params = new URLSearchParams(search);
     const newParams = new URLSearchParams();
     // We create a new parameters to get rid of any untreated params or double

@@ -43,7 +43,7 @@ export const minifigs = props => {
   return (
     <Grid container className={styles.center} justify="center" alignItems="stretch">
       <Pagination total={total} />
-      {/* <MinifigsSorter /> */}
+      {/* <minifigsFilter /> */}
       {/* should show a loader when currentMinifigs
       is null and a message when it's an empty array */}
       {currentMinifigs && currentMinifigs.slice(begin, end).map((minifig, i) => (

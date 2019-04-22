@@ -1,7 +1,7 @@
 import reducer from '.';
 import { types } from '.';
 
-describe('reducer/minifigsSorter', () => {
+describe('minifigsFilterReducer', () => {
     let initialState;
     beforeEach(() => {
         initialState = {
