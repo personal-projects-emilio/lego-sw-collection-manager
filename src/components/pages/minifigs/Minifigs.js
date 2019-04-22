@@ -17,6 +17,12 @@ export const minifigs = props => {
   }, [])
 
   useEffect(() => {
+    // We will check if the tag and character name exist
+    // so we need the minifigs to manage the search params
+    minifigs && props.manageSearchParams();
+  }, [minifigs])
+
+  useEffect(() => {
     if (minifigs) {
       const minifigsList = Object.keys(minifigs).filter((minifig, i) => {
         // we will manage the sort by filter here
@@ -53,7 +59,9 @@ export const minifigs = props => {
 minifigs.propTypes = {
   minifigs: PropTypes.object,
   activePage: PropTypes.number.isRequired,
-  numberPerPage: PropTypes.number.isRequired
+  numberPerPage: PropTypes.number.isRequired,
+  fetchMinifigs: PropTypes.func.isRequired,
+  manageSearchParams: PropTypes.func.isRequired,
 }
 
 export default minifigs
