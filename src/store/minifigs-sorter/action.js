@@ -11,10 +11,23 @@ export const setNumberPerPage = numberPerPage => ({
     numberPerPage
 });
 
-export const setShow = show => ({
-    type: types.SET.SHOW,
-    show
-});
+export const setShow = show => (dispatch, getState) => {
+    const search = getState().router.location.search;
+    const params = new URLSearchParams(search);
+    
+    // We set show or delete it in function of its value
+    show !== 'all' && params.set('show', show);
+    show === 'all' && params.has('show') && params.delete('show');
+
+    // We obtain the new query search and push it
+    const newSearch = params.toString() && `?${params.toString()}`;
+    search !== newSearch && dispatch(push({search: newSearch}));
+
+    dispatch({
+        type: types.SET.SHOW,
+        show
+    });
+}
 
 export const setCharacNameSelected = characNameSelected => (dispatch, getState) => {
     const search = getState().router.location.search;
