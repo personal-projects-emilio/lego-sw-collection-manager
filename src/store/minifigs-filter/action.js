@@ -114,3 +114,10 @@ export const manageSearchParams = () => (dispatch, getState) => {
     const newSearch = newParams.toString() && `?${newParams.toString()}`;
     search !== newSearch && dispatch(push({search: newSearch}));
 };
+
+export const resetFilters = () => (dispatch, getState) => {
+    const minifigsFilter = getState().minifigsFilter;
+    minifigsFilter.show !== 'all' && dispatch(setShow('all'));
+    minifigsFilter.tagSelected && dispatch(resetTagSelected());
+    minifigsFilter.characNameSelected && dispatch(resetCharcNameSelected());
+}
