@@ -23,19 +23,23 @@ export const nameAndTags = props => {
         color={characterName === characNameSelected ? "primary" : "default"}
         onClick={() => characNameHandler(characterName)}
       />
+      <Divider variant="fullWidth" />
       {tags && tags.length > 0 && (
         <>
-          <Divider variant="fullWidth" />
           {tags.sort().map(tag => (
             <Chip 
               key={`${characterName}-${tag}`}
               label={tag}
-              classes={{root: classes.chip}}
+              classes={{
+                root: classes.chip,
+                label: classes.label
+                }}
               clickable={tag !== tagSelected}
               color={tag === tagSelected ? "primary" : "default"}
               onClick={() => tagHandler(tag)}
             />
           ))}
+          <Divider variant="fullWidth" />
         </>
       )}
     </>

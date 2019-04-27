@@ -14,14 +14,15 @@ describe('<NameAndTags />', () => {
       tagSelected: null,
       setTagSelected: jest.fn(),
       classes: {
-        chip: 'chip'
+        chip: 'chip',
+        label: 'label'
       },
     }
   });
   it('should render the character name', () => {
     props.tagSelected = 'test';
     const wrapper = shallow(<NameAndTags {...props} />);
-    expect(wrapper.find(Divider)).toHaveLength(1);
+    expect(wrapper.find(Divider)).toHaveLength(2);
     expect(wrapper.find(Chip)).toHaveLength(1);
     wrapper.find(Chip).first().simulate('click');
     expect(props.setCharacNameSelected).toHaveBeenNthCalledWith(1, 'Battle Droid');
@@ -31,7 +32,7 @@ describe('<NameAndTags />', () => {
     props.tags = ['test', 'testBis'];
     props.tagSelected = 'test';
     const wrapper = shallow(<NameAndTags {...props} />);
-    expect(wrapper.find(Divider)).toHaveLength(2);
+    expect(wrapper.find(Divider)).toHaveLength(3);
     expect(wrapper.find(Chip)).toHaveLength(3);
     wrapper.find(Chip).last().simulate('click');
     expect(props.setTagSelected).toHaveBeenNthCalledWith(1, 'testBis');
