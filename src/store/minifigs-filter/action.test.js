@@ -134,4 +134,16 @@ describe('minifigs-filter/action', () => {
         actions.manageSearchParams()(dispatch, getState);
         expect(dispatch).toHaveBeenCalledTimes(2);
     });
+    it('should reset the filters', () => {
+        const dispatch = jest.fn();
+        const getState = jest.fn(() => ({
+            minifigsFilter: {
+                show: 'owned',
+                tagSelected: 'Bounty Hunter',
+                characNameSelected: 'R2-D2'
+            }
+        }))
+        actions.resetFilters()(dispatch, getState);
+        expect(dispatch).toHaveBeenCalledTimes(3);
+    });
 });

@@ -17,7 +17,7 @@ export const pagination = props => {
 
   const totalHandler = (total, range) => {
     if (total === 0) {
-      return ''
+      return null
     } else if (total <= range[1] && range[0] === 1) {
       return `${range[0]} - ${range[1]} minifigs`
     } else {
@@ -32,15 +32,16 @@ export const pagination = props => {
         current={props.activePage}
         onChange={props.setActivePage}
         // Nb per page options
-        showSizeChanger={props.total > 0}
+        showSizeChanger={props.total > props.nbPerPagesOptions[0]}
         pageSizeOptions={props.nbPerPagesOptions}
         onShowSizeChange={sizeHandler}
         selectComponentClass={Select}
         pageSize={props.numberPerPage}
         locale={locale}
-        // total
+        // Total
         showTotal={totalHandler}
         total={props.total}
+        // Responsive
         simple={props.isSmall}
       />
     </Grid>
