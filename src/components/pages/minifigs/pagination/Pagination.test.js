@@ -23,5 +23,7 @@ describe('<Pagination />', () => {
       expect(props.setNumberPerPage).toHaveBeenCalledWith(100);
       props.total = 1000;
       shallow(<CustomPagination {...props} />).render();
+      props.total = 0;
+      shallow(<CustomPagination {...props} />).render();
   });
 });

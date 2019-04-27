@@ -7,7 +7,8 @@ export {
   setCharacNameSelected,
   resetTagSelected,
   resetCharcNameSelected,
-  manageSearchParams
+  manageSearchParams,
+  resetFilters
 } from './action';
 export { types } from './types';
 export default minifigsFilterReducer;
