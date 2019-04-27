@@ -8,7 +8,14 @@ const styles = () => ({
         margin: '4px 2px',
         borderRadius: '12px',
         height: 'auto',
-        padding: '6px 0'
+        padding: '6px 0',
+        maxWidth: '100%'
+    },
+    label: {
+        textOverflow: 'ellipsis',
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        display: 'block'
     }
 });
 
