@@ -13,7 +13,8 @@ describe('<Management />', () => {
         name: 'Battle Droid',
         tags: ['Battle Droid', 'CIS', 'Droid']
       },
-      reference: 'sw0001'
+      reference: 'sw0001',
+      togglePossession: jest.fn()
     }
   });
   it('should render the minifig management part', () => {
@@ -23,5 +24,7 @@ describe('<Management />', () => {
     expect(wrapper.find(Checkbox)).toHaveLength(1);
     expect(wrapper.find(IconButton)).toHaveLength(2);
     expect(wrapper.find(Icon)).toHaveLength(2);
+    wrapper.find(Checkbox).simulate('change');
+    expect(props.togglePossession).toHaveBeenCalled();
   });
 });
