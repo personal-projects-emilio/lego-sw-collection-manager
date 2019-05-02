@@ -4,27 +4,29 @@ import { Grid, Paper, Typography, Divider } from "@material-ui/core";
 import LogoLink from './logo-link';
 import NameAndTags from './name-and-tags';
 import styles from './Minifig.module.css';
+import Management from "./management";
 
 export const minifigs = props => {
     const { reference, details } = props;
   return (
     <Paper className={styles.paper}>
-      <Grid container>
-          <Grid item xs={12}>
+      <Grid container className={styles.container} direction="column" justify="space-between">
+          <Grid item>
               <img
-                  className={styles.picture}
-                  src={`https://img.bricklink.com/ItemImage/MN/0/${reference}.png`}
-                  alt={`${reference}-bricklink-png`}
+                className={styles.picture}
+                src={`https://img.bricklink.com/ItemImage/MN/0/${reference}.png`}
+                alt={`${reference}-bricklink-png`}
               />
-              <Typography>{reference.toUpperCase()}</Typography>
           </Grid>
-          <Grid item xs={12}>
-            <Divider variant="fullWidth" />
+          <Grid item>
+            <Typography>{reference.toUpperCase()}</Typography>
+            <NameAndTags characterName={details.characterName} tags={details.tags} />
             <LogoLink reference={reference} type={'bricklink'} />
 						<LogoLink reference={reference} type={'brickset'} />
+            <Divider variant="fullWidth" />
           </Grid>
-          <Grid item xs={12}>
-            <NameAndTags characterName={details.characterName} tags={details.tags} />
+          <Grid item>
+            <Management reference={reference} details={details} />
           </Grid>
       </Grid>
     </Paper>

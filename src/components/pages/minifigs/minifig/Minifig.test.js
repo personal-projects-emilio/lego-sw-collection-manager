@@ -3,6 +3,7 @@ import { Grid, Paper, Typography, Divider } from "@material-ui/core";
 import LogoLink from './logo-link';
 import NameAndTags from './name-and-tags';import Minifig from './Minifig';
 import { shallow } from 'enzyme';
+import Management from "./management";
 
 describe('<Minifig />', () => {
   it('should render a minifig', () => {
@@ -23,5 +24,6 @@ describe('<Minifig />', () => {
       expect(wrapper.find(LogoLink)).toHaveLength(2);
       expect(wrapper.find(NameAndTags)).toHaveLength(1);
       expect(wrapper.find(Paper)).toHaveLength(1);
+      expect(wrapper.find(Management)).toHaveLength(1);
   });
 });
