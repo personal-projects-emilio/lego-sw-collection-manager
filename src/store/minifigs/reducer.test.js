@@ -59,4 +59,27 @@ describe('reducer/minifigs', () => {
             characNames: ['charac', 'test']
         });
     });
+    it('should toggle the possession of a minifig', () => {
+        const action = {
+            type: types.TOGGLE.POSSESSION,
+            reference: 'sw0001a'
+        }
+        const initState = {
+            ...initialState,
+            minifigs: {sw0001a: {possessed: false}},
+            numberOwned: 0,
+            totalNumber: 1,
+            percentageOwned: 0
+        }
+        expect(reducer(initState, action)).toEqual({
+            ...initState,
+            minifigs: {
+                sw0001a: {
+                    possessed: true
+                }
+            },
+            numberOwned: 1,
+            percentageOwned: 100
+        })
+    })
 });

@@ -1,4 +1,4 @@
-import { types } from ".";
+import { types, cases } from ".";
 
 const initialState = {
     minifigs: null,
@@ -11,20 +11,19 @@ const initialState = {
 
 const counterReducer = (state = initialState, action) => {
     switch ( action.type ) {
-        case types.SET.MINIFIGS : {
+        case types.SET.MINIFIGS : 
             return {...state, minifigs: action.minifigs}
-        }
-        case types.SET.STATISTICS: {
+        case types.SET.STATISTICS:
             return {
                 ...state,
                 totalNumber: action.statistics.totalNumber,
                 numberOwned: action.statistics.numberOwned,
                 percentageOwned: action.statistics.percentageOwned
             };
-        }
-        case types.SET.TAGS_AND_CHARACNAMES: {
+        case types.SET.TAGS_AND_CHARACNAMES:
             return {...state, tags: action.data.tags, characNames: action.data.characNames}
-        }
+        case types.TOGGLE.POSSESSION: 
+            return cases.togglePossession(state, action);
         default:
             return state;
     }

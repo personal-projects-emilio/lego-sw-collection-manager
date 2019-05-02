@@ -25,3 +25,8 @@ export const fetchMinifigs = () => dispatch => {
             dispatch(setTagsAndCharacterNames(getTagsAndCharacNames(res.data)));
         })
 };
+
+export const togglePossession = (reference) => ({
+    type: types.TOGGLE.POSSESSION,
+    reference
+});
