@@ -4,7 +4,7 @@ import Pagination from 'rc-pagination';
 import Select from 'rc-select';
 import locale from 'rc-pagination/lib/locale/en_US';
 import './rc-pagination.css';
-import 'rc-select/assets/index.css';
+import './rc-select.css';
 import { Grid } from "@material-ui/core";
 
 export const pagination = props => {
