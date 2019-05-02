@@ -3,11 +3,15 @@ import PropTypes from 'prop-types';
 import { Grid, Checkbox, IconButton, Icon, Tooltip } from "@material-ui/core";
 
 export const management = props => {
-    const { details } = props;
+  const { details, reference } = props;
   return (
     <Grid container justify="space-evenly">
       <Tooltip title="Possession" aria-label="Possession">
-        <Checkbox checked={!!details.possessed} color="default" />
+        <Checkbox
+          checked={!!details.possessed}
+          color="default"
+          onChange={() => props.togglePossession(reference)}
+        />
       </Tooltip>
       <Tooltip title="Edit" aria-label="Edit">
         <IconButton>
@@ -30,7 +34,8 @@ management.propTypes = {
         name: PropTypes.string.isRequired,
         possessed: PropTypes.bool.isRequired,
         tags: PropTypes.arrayOf(PropTypes.string)
-    })
+    }),
+    togglePossession: PropTypes.func.isRequired
 }
 
 export default management;
