@@ -52,10 +52,11 @@ export const minifigs = props => {
       {/* <minifigsFilter /> */}
       {/* should show a loader when currentMinifigs
       is null and a message when it's an empty array */}
-      {currentMinifigs && currentMinifigs.slice(begin, end).map(minifig => (
-        <Grid item xs={6} sm={4} md={3} lg={2} key={minifig}>
-          <Minifig reference={minifig} details={minifigs[minifig]}/>
-        </Grid>
+      {currentMinifigs && currentMinifigs.slice(begin, end).map(minifig =>
+        minifigs[minifig] && (
+          <Grid item xs={6} sm={4} md={3} lg={2} key={minifig}>
+            <Minifig reference={minifig} details={minifigs[minifig]}/>
+          </Grid>
       ))}
       {currentMinifigs && <Pagination total={total} />}
     </Grid>

@@ -146,4 +146,27 @@ describe('minifigs-filter/action', () => {
         actions.resetFilters()(dispatch, getState);
         expect(dispatch).toHaveBeenCalledTimes(3);
     });
+    it('should check tag and charac selected after a minifig deletion', () => {
+        const dispatch = jest.fn();
+        const getState = jest.fn(() => ({
+            minifigsFilter: {
+                tagSelected: 'Droid',
+                characNameSelected: 'Battle Droid'
+            },
+            minifigs: {
+                minifigs: {
+                    sw0001a: {
+                        tags: ['Droid'],
+                        characterName: 'Battle Droid'
+                    },
+                    sw0002: {
+                        tags: ['Anything'],
+                        characterName: 'Test'
+                    }
+                }
+            }
+        }))
+        actions.checkTagAndCharacAfterDelete('sw0001a')(dispatch, getState);
+        expect(dispatch).toHaveBeenCalledTimes(2);
+    });
 });

@@ -14,7 +14,8 @@ describe('<Management />', () => {
         tags: ['Battle Droid', 'CIS', 'Droid']
       },
       reference: 'sw0001',
-      togglePossession: jest.fn()
+      togglePossession: jest.fn(),
+      deleteMinifig: jest.fn()
     }
   });
   it('should render the minifig management part', () => {
@@ -26,5 +27,7 @@ describe('<Management />', () => {
     expect(wrapper.find(Icon)).toHaveLength(2);
     wrapper.find(Checkbox).simulate('change');
     expect(props.togglePossession).toHaveBeenCalled();
+    wrapper.find(IconButton).at(1).simulate('click');
+    expect(props.deleteMinifig).toHaveBeenCalled();
   });
 });

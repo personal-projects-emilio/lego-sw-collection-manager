@@ -80,6 +80,44 @@ describe('reducer/minifigs', () => {
             },
             numberOwned: 1,
             percentageOwned: 100
-        })
-    })
+        });
+    });
+    it('should toggle the possession of a minifig', () => {
+        const action = {
+            type: types.DELETE.MINIFIG,
+            reference: 'sw0001b'
+        }
+        const initState = {
+            ...initialState,
+            minifigs: {
+                sw0001a: {
+                    possessed: true,
+                    characterName: 'Battle Droid',
+                    tags: ['Droid']
+                },
+                sw0001b: {
+                    possessed: true,
+                    characterName: 'Battle Droid',
+                    tags: ['Droid']
+                }
+            },
+            numberOwned: 2,
+            percentageOwned: 100,
+            totalNumber: 2
+        }
+        expect(reducer(initState, action)).toEqual({
+            ...initState,
+            minifigs: {
+                sw0001a: {
+                    possessed: true,
+                    characterName: 'Battle Droid',
+                    tags: ['Droid']
+                }
+            },
+            numberOwned: 1,
+            totalNumber: 1,
+            tags: [{amount: 1, name: "Droid"}],
+            characNames: [{amount: 1, name: "Battle Droid"}]
+        });
+    });
 });
