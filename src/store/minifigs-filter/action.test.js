@@ -2,6 +2,10 @@ import { types } from '.';
 import * as actions from './action';
 
 describe('minifigs-filter/action', () => {
+    let dispatch;
+    beforeEach(() => {
+        dispatch = jest.fn();
+    })
     it('should return the setActivePage action', () => {
         expect(actions.setActivePage(2)).toEqual({
             type: types.SET.ACTIVE_PAGE,
@@ -14,8 +18,24 @@ describe('minifigs-filter/action', () => {
             numberPerPage: 200
         });
     });
+    it('should set the active page if need be', () => {
+        const getState = jest.fn(() => ({
+            minifigs: {
+                tags: [{name: 'Droid', amount: 20}]
+            },
+            minifigsFilter: {
+                activePage: 2,
+                numberPerPage: 25
+            }
+        }))
+        actions.checkActivePage('tags', 'Droid')(dispatch, getState);
+        expect(getState).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledWith({
+            type: types.SET.ACTIVE_PAGE,
+            activePage: 1
+        });
+    });
     it('should set show', () => {
-        const dispatch = jest.fn();
         const getState = jest.fn(() => ({
             router: {
                 location: {
@@ -32,7 +52,6 @@ describe('minifigs-filter/action', () => {
         });
     });
     it('should remove the show param', () => {
-        const dispatch = jest.fn();
         const getState = jest.fn(() => ({
             router: {
                 location: {
@@ -49,7 +68,6 @@ describe('minifigs-filter/action', () => {
         });
     });
     it('should set the character name', () => {
-        const dispatch = jest.fn();
         const getState = jest.fn(() => ({
             router: {
                 location: {
@@ -59,10 +77,9 @@ describe('minifigs-filter/action', () => {
         }))
         actions.setCharacNameSelected('Battle Droid')(dispatch, getState);
         expect(getState).toHaveBeenCalledTimes(1);
-        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledTimes(3);
     });
     it('should reset the character name', () => {
-        const dispatch = jest.fn();
         const getState = jest.fn(() => ({
             router: {
                 location: {
@@ -75,7 +92,6 @@ describe('minifigs-filter/action', () => {
         expect(dispatch).toHaveBeenCalledTimes(2);
     });
     it('should set the tag', () => {
-        const dispatch = jest.fn();
         const getState = jest.fn(() => ({
             router: {
                 location: {
@@ -85,7 +101,7 @@ describe('minifigs-filter/action', () => {
         }))
         actions.setTagSelected('Jedi')(dispatch, getState);
         expect(getState).toHaveBeenCalledTimes(1);
-        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledTimes(3);
     });
     it('should reset the tag selected', () => {
         const dispatch = jest.fn();
@@ -101,7 +117,6 @@ describe('minifigs-filter/action', () => {
         expect(dispatch).toHaveBeenCalledTimes(2);
     });
     it('should manage the search parameters for characterName and show', () => {
-        const dispatch = jest.fn();
         const getState = jest.fn(() => ({
             router: {
                 location: {
@@ -118,7 +133,6 @@ describe('minifigs-filter/action', () => {
         expect(dispatch).toHaveBeenCalledTimes(3);
     });
     it('should manage the search parameters for tag', () => {
-        const dispatch = jest.fn();
         const getState = jest.fn(() => ({
             router: {
                 location: {
@@ -135,7 +149,6 @@ describe('minifigs-filter/action', () => {
         expect(dispatch).toHaveBeenCalledTimes(2);
     });
     it('should reset the filters', () => {
-        const dispatch = jest.fn();
         const getState = jest.fn(() => ({
             minifigsFilter: {
                 show: 'owned',
@@ -147,7 +160,6 @@ describe('minifigs-filter/action', () => {
         expect(dispatch).toHaveBeenCalledTimes(3);
     });
     it('should check tag and charac selected after a minifig deletion', () => {
-        const dispatch = jest.fn();
         const getState = jest.fn(() => ({
             minifigsFilter: {
                 tagSelected: 'Droid',

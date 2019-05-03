@@ -31,25 +31,31 @@ export const setShow = show => (dispatch, getState) => {
     });
 }
 
+export const checkActivePage = (type, elSelected) => (dispatch, getState) => {
+    const state = getState();
+    const { minifigs } = state;
+    const { activePage, numberPerPage } = state.minifigsFilter;
+    const amount = minifigs[type] && minifigs[type].find(el => el.name === elSelected).amount;
+    amount && amount < activePage * numberPerPage 
+        && dispatch(setActivePage(Math.ceil(amount/numberPerPage)));
+}
+
 export const setCharacNameSelected = characNameSelected => (dispatch, getState) => {
     const search = getState().router.location.search;
     const params = new URLSearchParams(search);
-
     // We set the characterName
     params.set('characterName', characNameSelected);
-
     // We delete the tag parameter if it exists
     params.has('tag') && params.delete('tag');
-
     // We obtain the new query search and push it
     const newSearch = params.toString() && `?${params.toString()}`;
     search !== newSearch && dispatch(push({search: newSearch}));
-
     dispatch({
         type: types.SET.CHARACNAME_SELECTED,
         characNameSelected
     });
-};
+    dispatch(checkActivePage('characNames', characNameSelected));
+}
 
 export const resetCharcNameSelected = () => (dispatch, getState) => {
     const search = getState().router.location.search;
@@ -60,23 +66,21 @@ export const resetCharcNameSelected = () => (dispatch, getState) => {
 };
 
 export const setTagSelected = tagSelected => (dispatch, getState) => {
-    const search = getState().router.location.search;
+    const state = getState();
+    const search = state.router.location.search;
     const params = new URLSearchParams(search);
-
     // We set the tag
     params.set('tag', tagSelected);
-
     // We delete the characterName parameter if it exists
     params.has('characterName') && params.delete('characterName');
-
     // We obtain the new query search and push it
     const newSearch = params.toString() && `?${params.toString()}`
     search !== newSearch && dispatch(push({search: newSearch}));
-
     dispatch({
         type: types.SET.TAG_SELECTED,
         tagSelected
     });
+    dispatch(checkActivePage('tags', tagSelected));
 };
 
 export const resetTagSelected = () => (dispatch, getState) => {
