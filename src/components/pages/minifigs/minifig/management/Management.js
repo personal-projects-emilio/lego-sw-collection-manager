@@ -19,7 +19,7 @@ export const management = props => {
         </IconButton>
       </Tooltip>
       <Tooltip title="Delete" aria-label="Delete">
-        <IconButton>
+        <IconButton onClick={() => props.deleteMinifig(reference)}>
           <Icon>delete</Icon>
         </IconButton>
       </Tooltip>
@@ -35,7 +35,8 @@ management.propTypes = {
         possessed: PropTypes.bool.isRequired,
         tags: PropTypes.arrayOf(PropTypes.string)
     }),
-    togglePossession: PropTypes.func.isRequired
+    togglePossession: PropTypes.func.isRequired,
+    deleteMinifig: PropTypes.func.isRequired
 }
 
 export default management;

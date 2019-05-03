@@ -8,7 +8,8 @@ export {
   resetTagSelected,
   resetCharcNameSelected,
   manageSearchParams,
-  resetFilters
+  resetFilters,
+  checkTagAndCharacAfterDelete
 } from './action';
 export { types } from './types';
 export default minifigsFilterReducer;

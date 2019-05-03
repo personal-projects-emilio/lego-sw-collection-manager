@@ -1,6 +1,7 @@
 import { types } from '.';
 import axios from '../../axios';
 import { getStatistics, getTagsAndCharacNames } from '../../shared/utility';
+import { checkTagAndCharacAfterDelete } from '../minifigs-filter';
 
 export const setMinifigs = minifigs => ({
     type: types.SET.MINIFIGS,
@@ -30,3 +31,11 @@ export const togglePossession = (reference) => ({
     type: types.TOGGLE.POSSESSION,
     reference
 });
+
+export const deleteMinifig = reference => dispatch => {
+    dispatch(checkTagAndCharacAfterDelete(reference));
+    dispatch({
+        type: types.DELETE.MINIFIG,
+        reference
+    })
+};

@@ -6,5 +6,8 @@ export const types = {
     },
     TOGGLE: {
         POSSESSION: 'TOOGLE.POSSESSION'
+    },
+    DELETE: {
+        MINIFIG: 'DELETE.MINIFIG'
     }
 }
