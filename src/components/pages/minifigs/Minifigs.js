@@ -7,7 +7,7 @@ import styles from './Minifigs.module.css'
 
 export const minifigs = props => {
   const {minifigs, activePage, numberPerPage, tagSelected, characNameSelected, show } = props
-  const [currentMinifigs, setCurrentMinifigs] = useState(null)
+  const [currentMinifigs, setCurrentMinifigs] = useState([])
   const [total, setTotal] = useState(0)
   const [ begin, setBegin ] = useState(null)
   const [ end, setEnd ] = useState(null)
@@ -33,7 +33,7 @@ export const minifigs = props => {
             : tagSelected && minifig.tags ? minifig.tags.includes(tagSelected)
             : !characNameSelected && !tagSelected
         } else {return false}
-      })
+      }).map(reference => ({reference, ...minifigs[reference]}))
       setCurrentMinifigs(minifigsList)
       setTotal(minifigsList.length)
     }  
@@ -48,17 +48,16 @@ export const minifigs = props => {
   
   return (
     <Grid container className={styles.center} justify="center" alignItems="stretch">
-      {currentMinifigs && <Pagination total={total} />}
+      {currentMinifigs.length > 0 && <Pagination total={total} />}
       {/* <minifigsFilter /> */}
       {/* should show a loader when currentMinifigs
       is null and a message when it's an empty array */}
-      {currentMinifigs && currentMinifigs.slice(begin, end).map(minifig =>
-        minifigs[minifig] && (
-          <Grid item xs={6} sm={4} md={3} lg={2} key={minifig}>
-            <Minifig reference={minifig} details={minifigs[minifig]}/>
+      {currentMinifigs.length > 0 && currentMinifigs.slice(begin, end).map(minifig => (
+          <Grid item xs={6} sm={4} md={3} lg={2} key={minifig.reference}>
+            <Minifig reference={minifig.reference} details={minifig}/>
           </Grid>
       ))}
-      {currentMinifigs && <Pagination total={total} />}
+      {currentMinifigs.length > 0 && <Pagination total={total} />}
     </Grid>
   )
 }
