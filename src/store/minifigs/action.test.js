@@ -4,9 +4,11 @@ import MockAdapter from 'axios-mock-adapter';
 import * as actions from './action';
 
 describe('action/minifigs', () => {
+    let dispatch;
     let mock;
     beforeEach(() => {
         mock = new MockAdapter(axios);
+        dispatch = jest.fn();
     })
     afterEach(() => {
         mock.restore();
@@ -41,6 +43,14 @@ describe('action/minifigs', () => {
     it('should return a tooglePossession action', () => {
         expect(actions.togglePossession('sw0001a')).toEqual({
             type: types.TOGGLE.POSSESSION,
+            reference: 'sw0001a'
+        });
+    });
+    it('should return a deleteMinifig action', () => {
+        actions.deleteMinifig('sw0001a')(dispatch);
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+            type: types.DELETE.MINIFIG,
             reference: 'sw0001a'
         });
     });

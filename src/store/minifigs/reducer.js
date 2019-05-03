@@ -24,6 +24,8 @@ const counterReducer = (state = initialState, action) => {
             return {...state, tags: action.data.tags, characNames: action.data.characNames}
         case types.TOGGLE.POSSESSION: 
             return cases.togglePossession(state, action);
+        case types.DELETE.MINIFIG:
+            return cases.deleteMinifig(state, action);
         default:
             return state;
     }

@@ -1,5 +1,7 @@
 import { types } from '.';
 import { push } from 'connected-react-router';
+import dotProp from 'dot-prop-immutable';
+import { getTagsAndCharacNames } from '../../shared/utility';
 
 export const setActivePage = activePage => ({
     type: types.SET.ACTIVE_PAGE,
@@ -121,3 +123,17 @@ export const resetFilters = () => (dispatch, getState) => {
     minifigsFilter.tagSelected && dispatch(resetTagSelected());
     minifigsFilter.characNameSelected && dispatch(resetCharcNameSelected());
 }
+
+export const checkTagAndCharacAfterDelete = reference => (dispatch, getState) => {
+    const state = getState();
+    const minifigsFilter = state.minifigsFilter;
+    const minifigs = state.minifigs.minifigs;
+    const updatedMinifigs = dotProp.delete(minifigs, reference);
+    const data = getTagsAndCharacNames(updatedMinifigs);
+    minifigsFilter.tagSelected
+        && data.tags.map(tag => tag.name).indexOf(minifigsFilter.tagSelected) === -1
+        && dispatch(resetTagSelected()); 
+    minifigsFilter.characNameSelected
+        && data.characNames.map(characName => characName.name).indexOf(minifigsFilter.characNameSelected) === -1
+        && dispatch(resetCharcNameSelected());
+};
