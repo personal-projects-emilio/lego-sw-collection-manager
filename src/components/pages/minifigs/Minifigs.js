@@ -4,6 +4,7 @@ import { Grid } from "@material-ui/core"
 import Minifig from './minifig'
 import Pagination from "./pagination"
 import styles from './Minifigs.module.css'
+import Loader from "../../commons/loader";
 
 export const minifigs = props => {
   const {minifigs, activePage, numberPerPage, tagSelected, characNameSelected, show } = props
@@ -46,7 +47,7 @@ export const minifigs = props => {
     newEnd !== end && setEnd(newEnd)
   }, [activePage, numberPerPage])
   
-  return (
+  return minifigs ? (
     <Grid container className={styles.center} justify="center" alignItems="stretch">
       {currentMinifigs.length > 0 && <Pagination total={total} />}
       {/* <minifigsFilter /> */}
@@ -59,7 +60,7 @@ export const minifigs = props => {
       ))}
       {currentMinifigs.length > 0 && <Pagination total={total} />}
     </Grid>
-  )
+  ) : <Loader />
 }
 
 minifigs.propTypes = {
