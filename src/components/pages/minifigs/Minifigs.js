@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import PropTypes from 'prop-types'
-import { Grid } from "@material-ui/core"
+import { Grid, Typography, Button } from "@material-ui/core"
 import Minifig from './minifig'
 import Pagination from "./pagination"
 import styles from './Minifigs.module.css'
@@ -47,20 +47,23 @@ export const minifigs = props => {
     newEnd !== end && setEnd(newEnd)
   }, [activePage, numberPerPage])
   
-  return minifigs ? (
+  return minifigs && currentMinifigs.length > 0 ? (
     <Grid container className={styles.center} justify="center" alignItems="stretch">
-      {currentMinifigs.length > 0 && <Pagination total={total} />}
-      {/* <minifigsFilter /> */}
-      {/* should show a loader when currentMinifigs
-      is null and a message when it's an empty array */}
-      {currentMinifigs.length > 0 && currentMinifigs.slice(begin, end).map(minifig => (
+      <Pagination total={total} />
+      {currentMinifigs.slice(begin, end).map(minifig => (
           <Grid item xs={6} sm={4} md={3} lg={2} key={minifig.reference}>
             <Minifig reference={minifig.reference} details={minifig}/>
           </Grid>
       ))}
-      {currentMinifigs.length > 0 && <Pagination total={total} />}
+      <Pagination total={total} />
     </Grid>
-  ) : <Loader />
+  ) : minifigs && currentMinifigs.length === 0 ? (
+      <Typography align="center" variant="h6">
+        <p>There are no minifigs with those filters</p>
+        <Button variant="contained" onClick={props.resetFilters}>Reset filters</Button>
+      </Typography> 
+    
+  ) :<Loader />
 }
 
 minifigs.propTypes = {
