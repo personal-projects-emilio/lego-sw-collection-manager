@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from 'prop-types';
-import { Grid, Checkbox, IconButton, Icon, Tooltip } from "@material-ui/core";
+import { Grid, Checkbox, IconButton, Icon, Tooltip, Modal, Button, Paper, Typography } from "@material-ui/core";
+import styles from './Management.module.css';
 
 export const management = props => {
-  const { details, reference } = props;
+  const [open, setOpen] = useState(false);
+  const { details, reference, deleteMinifig, togglePossession } = props;
+
+  const deleteHandler = () => {
+    setOpen(false);
+    deleteMinifig(reference);
+  }
   return (
     <Grid container justify="space-evenly">
       <Tooltip title="Possession" aria-label="Possession">
         <Checkbox
           checked={!!details.possessed}
           color="default"
-          onChange={() => props.togglePossession(reference)}
+          onChange={() => togglePossession(reference)}
         />
       </Tooltip>
       <Tooltip title="Edit" aria-label="Edit">
@@ -19,10 +26,19 @@ export const management = props => {
         </IconButton>
       </Tooltip>
       <Tooltip title="Delete" aria-label="Delete">
-        <IconButton onClick={() => props.deleteMinifig(reference)}>
+        <IconButton onClick={() => setOpen(true)}>
           <Icon>delete</Icon>
         </IconButton>
       </Tooltip>
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <Paper className={styles.Paper}>
+          <Typography variant="h6">
+            Are you sure you want to delete the {reference.toUpperCase()} minifig? This action is irreversible.
+          </Typography>
+          <Button variant="outlined" onClick={deleteHandler}>Delete</Button>
+          <Button variant="outlined" onClick={() => setOpen(false)}>Cancel</Button>
+        </Paper>
+      </Modal>
     </Grid>
   )
 }
