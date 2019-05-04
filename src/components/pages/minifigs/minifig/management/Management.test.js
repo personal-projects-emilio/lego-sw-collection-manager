@@ -1,7 +1,7 @@
 import React from 'react';
 import Management from './Management';
 import { shallow } from 'enzyme';
-import { Grid, Checkbox, IconButton, Icon, Tooltip } from "@material-ui/core";
+import { Grid, Checkbox, IconButton, Icon, Tooltip, Modal, Paper, Button, Typography } from "@material-ui/core";
 
 describe('<Management />', () => {
   let props;
@@ -25,9 +25,19 @@ describe('<Management />', () => {
     expect(wrapper.find(Checkbox)).toHaveLength(1);
     expect(wrapper.find(IconButton)).toHaveLength(2);
     expect(wrapper.find(Icon)).toHaveLength(2);
+    expect(wrapper.find(Modal)).toHaveLength(1);
+    expect(wrapper.find(Typography)).toHaveLength(1);
+    expect(wrapper.find(Paper)).toHaveLength(1);
+    expect(wrapper.find(Button)).toHaveLength(2);
+  });
+  it('should manage every action', () => {
+    const wrapper = shallow(<Management {...props} />);
     wrapper.find(Checkbox).simulate('change');
     expect(props.togglePossession).toHaveBeenCalled();
     wrapper.find(IconButton).at(1).simulate('click');
+    wrapper.find(Button).at(0).simulate('click');
     expect(props.deleteMinifig).toHaveBeenCalled();
+    wrapper.find(Button).at(1).simulate('click');
+    wrapper.find(Modal).first().simulate('close');
   });
 });
