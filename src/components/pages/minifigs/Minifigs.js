@@ -5,6 +5,7 @@ import Minifig from './minifig'
 import Pagination from "./pagination"
 import styles from './Minifigs.module.css'
 import Loader from "../../commons/loader";
+import MinifigMenu from "./minifig-menu";
 
 export const minifigs = props => {
   const {minifigs, activePage, numberPerPage, tagSelected, characNameSelected, show } = props
@@ -49,13 +50,20 @@ export const minifigs = props => {
   
   return minifigs && currentMinifigs.length > 0 ? (
     <Grid container className={styles.center} justify="center" alignItems="stretch">
-      <Pagination total={total} />
+      <Grid item xs={12}>
+        <MinifigMenu />
+      </Grid>
+      <Grid item xs={12}>
+        <Pagination total={total} />
+      </Grid>
       {currentMinifigs.slice(begin, end).map(minifig => (
           <Grid item xs={6} sm={4} md={3} lg={2} key={minifig.reference}>
             <Minifig reference={minifig.reference} details={minifig}/>
           </Grid>
       ))}
-      <Pagination total={total} />
+      <Grid item xs={12}>
+        <Pagination total={total} />
+      </Grid>
     </Grid>
   ) : minifigs && currentMinifigs.length === 0 ? (
       <Typography align="center" variant="h6">
