@@ -45,9 +45,10 @@
       "!src/setupTests.js",
       "!src/axios.js",
       "!src/**/*.container.{js,jsx}",
-      "!src/store/**/types.{js,jsx}",
+      "!src/stores/**/types.{js,jsx}",
       "!src/**/index.{js,jsx}",
-      "!src/**/theme.{js,jsx}"
+      "!src/**/theme.{js,jsx}",
+      "!src/templates"
     ]
   },
   "devDependencies": {
