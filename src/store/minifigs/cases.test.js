@@ -83,4 +83,53 @@ describe('cases/minifigs', () => {
       }
     );
   });
+  it('should set all the minifigs to owned', () => {
+    let initState = {
+      minifigs: {
+        sw0001a: {
+          possessed: true,
+          characterName: 'Battle Droid',
+          tags: ['Droid']
+        },
+        sw0001b: {
+            possessed: false,
+            characterName: 'Battle Droid',
+            tags: ['Droid']
+        },
+        sw0001c: {
+          possessed: false,
+          characterName: 'Battle Droid',
+          tags: ['Droid']
+        }
+      },
+      numberOwned: 1,
+      percentageOwned: 33,
+      totalNumber: 3,
+    };
+    expect(cases.setPossessionToAll(initState, { possessed: true })).toEqual(
+      {
+        ...initState,
+        minifigs: {
+          sw0001a: {
+            possessed: true,
+            characterName: 'Battle Droid',
+            tags: ['Droid']
+          },
+          sw0001b: {
+              possessed: true,
+              characterName: 'Battle Droid',
+              tags: ['Droid']
+          },
+          sw0001c: {
+            possessed: true,
+            characterName: 'Battle Droid',
+            tags: ['Droid']
+          }
+        },
+        numberOwned: 3,
+        percentageOwned: 100,
+        totalNumber: 3,
+      }
+    );
+  });
 });
