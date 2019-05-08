@@ -48,31 +48,35 @@ export const minifigs = props => {
     newEnd !== end && setEnd(newEnd)
   }, [activePage, numberPerPage])
   
-  return minifigs && currentMinifigs.length > 0 ? (
+  return minifigs ? (
     <Grid container className={styles.center} justify="center" alignItems="stretch">
-      <Grid item xs={12}>
-        <MinifigsMenu />
-      </Grid>
-      <Grid item xs={12}>
-        <Pagination total={total} />
-      </Grid>
-      {currentMinifigs.slice(begin, end).map(minifig => (
-          <Grid item xs={6} sm={4} md={3} lg={2} key={minifig.reference}>
-            <Minifig reference={minifig.reference} details={minifig}/>
+        <Grid item xs={12}>
+          <MinifigsMenu />
+        </Grid>
+        {currentMinifigs.length > 0 ? (
+        <>
+          <Grid item xs={12}>
+            <Pagination total={total} />
           </Grid>
-      ))}
-      <Grid item xs={12}>
-        <Pagination total={total} />
-      </Grid>
+          {currentMinifigs.slice(begin, end).map(minifig => (
+              <Grid item xs={6} sm={4} md={3} lg={2} key={minifig.reference}>
+                <Minifig reference={minifig.reference} details={minifig}/>
+              </Grid>
+          ))}
+          <Grid item xs={12}>
+            <Pagination total={total} />
+          </Grid>
+        </>
+        ) : (
+        <Typography align="center" variant="h6">
+          <p>There are no minifigs with those filters</p>
+          <Button variant="contained" onClick={props.resetFilters}>Reset filters</Button>
+        </Typography>
+        )}
     </Grid>
-  ) : minifigs && currentMinifigs.length === 0 ? (
-      <Typography align="center" variant="h6">
-        <p>There are no minifigs with those filters</p>
-        <Button variant="contained" onClick={props.resetFilters}>Reset filters</Button>
-      </Typography> 
-    
-  ) :<Loader />
+    ) :<Loader />
 }
+
 
 minifigs.propTypes = {
   minifigs: PropTypes.object,
