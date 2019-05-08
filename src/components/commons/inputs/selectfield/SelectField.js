@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TextField, MenuItem } from '@material-ui/core';
 import ClearAdornment from '../clear-adornment';
+import styles from './SelectField.module.css';
 
 export const selectField = props => {
-  const { options, value, setValue, label, resetValue, classes } = props;
+  const { options, value, setValue, label, resetValue } = props;
 
   const changeHandler = e => {
     const newValue = e.target.value;
@@ -15,7 +16,7 @@ export const selectField = props => {
       id="select-show-filter"
       label={label}
       select
-      className={classes.Selectfield}
+      className={styles.selectfield}
       value={value ? value : ''}
       fullWidth
       variant="outlined"
@@ -25,15 +26,6 @@ export const selectField = props => {
           <ClearAdornment position="end" clearAction={resetValue} />
         ),
         fullWidth: !value
-      }}
-      SelectProps={{
-        MenuProps: {
-          getContentAnchorEl: null,
-          anchorOrigin: {
-            vertical: "bottom",
-            horizontal: "left",
-          }
-        }
       }}
     >
       {options.map(option => (
