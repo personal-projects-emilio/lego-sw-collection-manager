@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Grid, TextField, MenuItem } from "@material-ui/core";
-import styles from "./Filters.module.css";
+import { TextField, MenuItem } from "@material-ui/core";
 import SelectField from "../../../../commons/inputs/selectfield";
 
 export const filters = props => {
@@ -24,7 +23,7 @@ export const filters = props => {
     value !== show && setShow(value);
   };
   return (
-    <Grid container>
+    <>
       <TextField
         id="select-show-filter"
         label="Show"
@@ -32,7 +31,6 @@ export const filters = props => {
         value={show}
         variant="outlined"
         fullWidth
-        className={styles.Selectfield}
         onChange={setShowHandler}
       >
         {showOptions.map(option => (
@@ -65,7 +63,7 @@ export const filters = props => {
           resetValue={resetTag}
         />
       )}
-    </Grid>
+    </>
   );
 };
 
