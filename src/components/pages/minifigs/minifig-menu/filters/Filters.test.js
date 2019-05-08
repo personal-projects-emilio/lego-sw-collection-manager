@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Filters from './Filters';
-import { Grid, TextField, MenuItem } from '@material-ui/core';
+import { TextField, MenuItem } from '@material-ui/core';
 import SelectField from '../../../../commons/inputs/selectfield';
 
 describe('<Filters />', () => {
@@ -23,10 +23,9 @@ describe('<Filters />', () => {
   });
   it('should render the Filters section', () => {
     const wrapper = shallow(<Filters {...props} />);
-    expect(wrapper.find(Grid)).toHaveLength(1);
     expect(wrapper.find(TextField)).toHaveLength(1);
     expect(wrapper.find(MenuItem)).toHaveLength(3);
-    expect(wrapper.find(SelectField)).toHaveLength(1);
+    expect(wrapper.find(SelectField)).toHaveLength(2);
     wrapper.find(TextField).first().simulate('change', {target: {value: 'owned'}});
     expect(props.setShow).toHaveBeenCalledWith('owned');
   });
