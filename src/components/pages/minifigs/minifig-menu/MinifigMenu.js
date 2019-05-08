@@ -8,7 +8,7 @@ export const minifigMenu = props => (
   <Grid container>
     <Grid item xs={12} md={6}>
       <Paper classes={{ root: styles.Paper }}>
-        <Grid container className={styles.Container}>
+        <Grid container className={styles.Container} alignItems="center">
           <Miscellaneous />
         </Grid>
       </Paper>
