@@ -5,13 +5,15 @@ import { routerMiddleware, connectRouter } from 'connected-react-router'
 import { createBrowserHistory } from 'history';
 import minifigsReducer from "./minifigs";
 import minifigsFilterReducer from "./minifigs-filter";
+import minifigFormReducer from "./minifig-form";
 
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
   router: connectRouter(history),
   minifigs: minifigsReducer,
-  minifigsFilter: minifigsFilterReducer
+  minifigsFilter: minifigsFilterReducer,
+  minifigForm: minifigFormReducer
 });
 
 const store = createStore(
