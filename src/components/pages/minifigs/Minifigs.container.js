@@ -1,7 +1,7 @@
 import Minifigs from './Minifigs';
 import { connect } from 'react-redux';
-import { fetchMinifigs } from '../../../store/minifigs';
-import { manageSearchParams, resetFilters } from '../../../store/minifigs-filter';
+import { fetchMinifigs } from '../../../stores/minifigs';
+import { manageSearchParams, resetFilters } from '../../../stores/minifigs-filter';
 
 const mapStateToProps = state => ({
     minifigs: state.minifigs.minifigs,
