@@ -1,6 +1,6 @@
 import Filters from './Filters';
 import { connect } from 'react-redux';
-import { setShow, setTagSelected, setCharacNameSelected, resetTagSelected, resetCharcNameSelected } from '../../../../../store/minifigs-filter';
+import { setShow, setTagSelected, setCharacNameSelected, resetTagSelected, resetCharcNameSelected } from '../../../../../stores/minifigs-filter';
 
 const mapStateToProps = state => ({
     showOptions: state.minifigsFilter.options.show,

@@ -1,5 +1,5 @@
 import dotProp from 'dot-prop-immutable';
-import { getTagsAndCharacNames } from '../../shared/utility';
+import { getTagsAndCharacNames } from '../../services/minifigs';
 
 export const togglePossession = (state, action) => {
   const { reference } = action;

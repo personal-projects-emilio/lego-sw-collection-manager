@@ -1,7 +1,7 @@
 import { withStyles } from '@material-ui/core';
 import Miscellaneous from './Miscellaneous';
 import { connect } from 'react-redux';
-import { setPossessionToAll } from '../../../../../store/minifigs';
+import { setPossessionToAll } from '../../../../../stores/minifigs';
 
 const mapStateToProps = state => ({
     totalNumber: state.minifigs.totalNumber,

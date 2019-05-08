@@ -1,6 +1,6 @@
 import { types } from '.';
 import axios from '../../axios';
-import { getStatistics, getTagsAndCharacNames } from '../../shared/utility';
+import { getStatistics, getTagsAndCharacNames } from '../../services/minifigs';
 import { checkTagAndCharacAfterDelete } from '../minifigs-filter';
 
 export const setMinifigs = minifigs => ({

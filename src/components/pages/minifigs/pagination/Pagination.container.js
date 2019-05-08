@@ -1,7 +1,7 @@
 import Pagination from './Pagination';
 import withSizes from 'react-sizes'
 import { connect } from 'react-redux';
-import { setActivePage, setNumberPerPage } from '../../../../store/minifigs-filter';
+import { setActivePage, setNumberPerPage } from '../../../../stores/minifigs-filter';
 
 const mapStateToProps = state => ({
   activePage: state.minifigsFilter.activePage,

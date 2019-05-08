@@ -1,4 +1,4 @@
-import { getStatistics, getTagsAndCharacNames } from "./utility";
+import { getStatistics, getTagsAndCharacNames } from "./minifigs";
 
 describe('utility', () => {
     const minifigs = {
