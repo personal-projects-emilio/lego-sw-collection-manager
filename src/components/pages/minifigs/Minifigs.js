@@ -5,7 +5,7 @@ import Minifig from './minifig'
 import Pagination from "./pagination"
 import styles from './Minifigs.module.css'
 import Loader from "../../commons/loader";
-import MinifigMenu from "./minifig-menu";
+import MinifigsMenu from "./minifigs-menu";
 
 export const minifigs = props => {
   const {minifigs, activePage, numberPerPage, tagSelected, characNameSelected, show } = props
@@ -51,7 +51,7 @@ export const minifigs = props => {
   return minifigs && currentMinifigs.length > 0 ? (
     <Grid container className={styles.center} justify="center" alignItems="stretch">
       <Grid item xs={12}>
-        <MinifigMenu />
+        <MinifigsMenu />
       </Grid>
       <Grid item xs={12}>
         <Pagination total={total} />
