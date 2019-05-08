@@ -7,7 +7,8 @@ export {
   setStatistics,
   setTagsAndCharacterNames,
   togglePossession,
-  deleteMinifig
+  deleteMinifig,
+  setPossessionToAll
 } from './action';
 export { types } from './types';
 export default minifigsReducer;

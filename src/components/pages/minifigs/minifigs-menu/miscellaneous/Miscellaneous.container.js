@@ -1,6 +1,7 @@
 import { withStyles } from '@material-ui/core';
 import Miscellaneous from './Miscellaneous';
 import { connect } from 'react-redux';
+import { setPossessionToAll } from '../../../../../store/minifigs';
 
 const mapStateToProps = state => ({
     totalNumber: state.minifigs.totalNumber,
@@ -10,6 +11,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  setPossessionToAll: possessed => dispatch(setPossessionToAll(possessed))
 });
 
 const styles = theme => ({

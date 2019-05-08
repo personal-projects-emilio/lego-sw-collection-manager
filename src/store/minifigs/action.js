@@ -39,3 +39,8 @@ export const deleteMinifig = reference => dispatch => {
         reference
     })
 };
+
+export const setPossessionToAll = possessed => ({
+    type: types.SET.POSSESION_TO_ALL,
+    possessed
+});
