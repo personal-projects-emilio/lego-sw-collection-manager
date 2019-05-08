@@ -21,7 +21,7 @@ export const management = props => {
         />
       </Tooltip>
       <Tooltip title="Edit" aria-label="Edit">
-        <IconButton>
+        <IconButton disabled>
           <Icon>edit</Icon>
         </IconButton>
       </Tooltip>

@@ -1,18 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Typography, LinearProgress, Grid, Tooltip, Button, Icon } from "@material-ui/core";
+import {
+  Typography,
+  LinearProgress,
+  Grid,
+  Tooltip,
+  Button,
+  Icon,
+  Divider,
+  Fab
+} from "@material-ui/core";
 
 export const miscellaneous = props => (
   <>
     <Grid item xs={12}>
       <Typography align="center" variant="subtitle1">
-        {`You possess ${props.numberOwned} of the ${props.totalNumber} minifigs in our database`}
+        {`You possess ${props.numberOwned} of the ${
+          props.totalNumber
+        } minifigs in our database`}
       </Typography>
     </Grid>
     <Grid item xs={12}>
       <Tooltip
         title={`${props.percentageOwned}%`}
-        placement={props.percentageOwned > 50 ? 'top-end' : 'top'}>
+        placement={props.percentageOwned > 50 ? "top-end" : "top"}
+      >
         <LinearProgress
           variant="determinate"
           value={props.percentageOwned}
@@ -21,7 +33,43 @@ export const miscellaneous = props => (
       </Tooltip>
     </Grid>
     <Grid item xs={12}>
-      <Button color="primary" variant="contained" className={props.classes.button}>
+      <Divider />
+      <Typography inline>Set possession to all:</Typography>
+      <Tooltip
+        title="Set all the minifigs to owned"
+        placement="top"
+      >
+        <Fab
+          size="small"
+          color="primary"
+          arial-label="set-all-to-possessed"
+          className={props.classes.button}
+        >
+          <Icon>check_box</Icon>
+        </Fab>
+      </Tooltip>
+      <Tooltip
+        title="Set all the minifigs to missing"
+        placement="top"
+      >
+        <Fab
+          size="small"
+          color="primary"
+          arial-label="set-all-to-not-possessed"
+          className={props.classes.button}
+        >
+          <Icon>check_box_outline_blank</Icon>
+        </Fab>
+      </Tooltip>
+        <Divider />
+    </Grid>
+    <Grid item xs={12}>
+      <Button
+        color="primary"
+        variant="contained"
+        className={props.classes.button}
+        disabled
+      >
         Add a minifig
         <Icon className={props.classes.icon}>add_circle</Icon>
       </Button>
@@ -45,7 +93,7 @@ miscellaneous.propTypes = {
   totalNumber: PropTypes.number,
   numberOwned: PropTypes.number,
   percentageOwned: PropTypes.number,
-  minifigs: PropTypes.object,
+  minifigs: PropTypes.object
 };
 
 export default miscellaneous;
