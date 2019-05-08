@@ -34,3 +34,20 @@ export const deleteMinifig = (state, action) => {
     characNames: data.characNames,
   }
 }
+
+export const setPossessionToAll = (state, action) => {
+  const { possessed } = action;
+  const { minifigs, totalNumber } = state;
+	let updatedMinifigs = {};
+	Object.keys(minifigs).forEach(minifig => 
+		updatedMinifigs[minifig] = dotProp.set(minifigs[minifig], 'possessed', possessed)
+  );
+  const numberOwned = possessed ? totalNumber : 0;
+  const percentageOwned = possessed ? 100 : 0;
+	return {
+    ...state,
+    minifigs: updatedMinifigs,
+    numberOwned,
+    percentageOwned
+  }
+}

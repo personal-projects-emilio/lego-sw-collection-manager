@@ -44,6 +44,7 @@ export const miscellaneous = props => (
           color="primary"
           arial-label="set-all-to-possessed"
           className={props.classes.button}
+          onClick={() => props.setPossessionToAll(true)}
         >
           <Icon>check_box</Icon>
         </Fab>
@@ -57,6 +58,7 @@ export const miscellaneous = props => (
           color="primary"
           arial-label="set-all-to-not-possessed"
           className={props.classes.button}
+          onClick={() => props.setPossessionToAll(false)}
         >
           <Icon>check_box_outline_blank</Icon>
         </Fab>
@@ -93,7 +95,8 @@ miscellaneous.propTypes = {
   totalNumber: PropTypes.number,
   numberOwned: PropTypes.number,
   percentageOwned: PropTypes.number,
-  minifigs: PropTypes.object
+  minifigs: PropTypes.object,
+  setPossessionToAll: PropTypes.func.isRequired
 };
 
 export default miscellaneous;

@@ -13,7 +13,8 @@ describe('<Miscellaneous />', () => {
         icon: 'icon',
         button: 'button',
         linearProgress: 'linearProgress'
-      }
+      },
+      setPossessionToAll: jest.fn()
     }
     const wrapper = shallow(<Miscellaneous {...props} />);
     expect(wrapper.find(Grid)).toHaveLength(4);
@@ -24,5 +25,9 @@ describe('<Miscellaneous />', () => {
     expect(wrapper.find(Icon)).toHaveLength(4);
     expect(wrapper.find(Divider)).toHaveLength(2);
     expect(wrapper.find(Fab)).toHaveLength(2);
+    wrapper.find(Fab).at(0).simulate('click');
+    expect(props.setPossessionToAll).toHaveBeenCalledWith(true);
+    wrapper.find(Fab).at(1).simulate('click');
+    expect(props.setPossessionToAll).toHaveBeenCalledWith(false);
   });
 });

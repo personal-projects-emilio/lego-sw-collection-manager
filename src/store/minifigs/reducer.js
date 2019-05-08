@@ -26,6 +26,8 @@ const counterReducer = (state = initialState, action) => {
             return cases.togglePossession(state, action);
         case types.DELETE.MINIFIG:
             return cases.deleteMinifig(state, action);
+        case types.SET.POSSESION_TO_ALL: 
+            return cases.setPossessionToAll(state, action);
         default:
             return state;
     }

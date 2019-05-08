@@ -40,7 +40,7 @@ describe('action/minifigs', () => {
         })
         actions.fetchMinifigs()(dispatch)
     });
-    it('should return a tooglePossession action', () => {
+    it('should return a togglePossession action', () => {
         expect(actions.togglePossession('sw0001a')).toEqual({
             type: types.TOGGLE.POSSESSION,
             reference: 'sw0001a'
@@ -52,6 +52,12 @@ describe('action/minifigs', () => {
         expect(dispatch).toHaveBeenNthCalledWith(2, {
             type: types.DELETE.MINIFIG,
             reference: 'sw0001a'
+        });
+    });
+    it('should return a setPossesstionToAll action', () => {
+        expect(actions.setPossessionToAll(true)).toEqual({
+            type: types.SET.POSSESION_TO_ALL,
+            possessed: true
         });
     });
 });
