@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Typography, LinearProgress, Grid, Tooltip } from "@material-ui/core";
-import styles from "./Miscellaneous.module.css";
+import { Typography, LinearProgress, Grid, Tooltip, Button, Icon } from "@material-ui/core";
 
 export const miscellaneous = props => (
   <>
@@ -17,9 +16,27 @@ export const miscellaneous = props => (
         <LinearProgress
           variant="determinate"
           value={props.percentageOwned}
-          className={styles.LinearProgress}
+          className={props.classes.linearProgress}
         />
       </Tooltip>
+    </Grid>
+    <Grid item xs={12}>
+      <Button color="primary" variant="contained" className={props.classes.button}>
+        Add a minifig
+        <Icon className={props.classes.icon}>add_circle</Icon>
+      </Button>
+      <Button
+        color="primary"
+        variant="contained"
+        className={props.classes.button}
+        href={`data:text/json;charset=utf-8,${encodeURIComponent(
+          JSON.stringify(props.minifigs)
+        )}`}
+        download="minifigs.json"
+      >
+        Download minifigs
+        <Icon className={props.classes.icon}>cloud_download</Icon>
+      </Button>
     </Grid>
   </>
 );
@@ -27,7 +44,8 @@ export const miscellaneous = props => (
 miscellaneous.propTypes = {
   totalNumber: PropTypes.number,
   numberOwned: PropTypes.number,
-  percentageOwned: PropTypes.number
+  percentageOwned: PropTypes.number,
+  minifigs: PropTypes.object,
 };
 
 export default miscellaneous;
