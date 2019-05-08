@@ -1,2 +1,2 @@
-import MinifigMenu from './MinifigMenu.container';
+import MinifigMenu from './MinifigMenu';
 export default MinifigMenu;
