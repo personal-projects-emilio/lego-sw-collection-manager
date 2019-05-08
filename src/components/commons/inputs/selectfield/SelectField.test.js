@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextField, MenuItem } from '@material-ui/core';
-import SelectField from './Selectfield';
+import SelectField from './SelectField';
 import { shallow } from 'enzyme';
 
 describe('<Selectfield />', () => {

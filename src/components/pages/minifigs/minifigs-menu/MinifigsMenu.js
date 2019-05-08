@@ -1,10 +1,10 @@
 import React from "react";
 import { Grid, Paper } from "@material-ui/core";
-import styles from "./MinifigMenu.module.css";
+import styles from "./MinifigsMenu.module.css";
 import Filters from "./filters";
 import Miscellaneous from "./miscellaneous";
 
-export const minifigMenu = props => (
+export const minifigsMenu = props => (
   <Grid container>
     <Grid item xs={12} md={6}>
       <Paper classes={{ root: styles.Paper }}>
@@ -23,4 +23,4 @@ export const minifigMenu = props => (
   </Grid>
 );
 
-export default minifigMenu;
+export default minifigsMenu;
