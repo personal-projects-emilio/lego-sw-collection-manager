@@ -1,7 +1,7 @@
 import { types } from '.';
 import { push } from 'connected-react-router';
 import dotProp from 'dot-prop-immutable';
-import { getTagsAndCharacNames } from '../../shared/utility';
+import { getTagsAndCharacNames } from '../../services/minifigs';
 
 export const setActivePage = activePage => ({
     type: types.SET.ACTIVE_PAGE,

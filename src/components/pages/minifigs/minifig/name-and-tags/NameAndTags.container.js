@@ -1,7 +1,7 @@
 import nameAndTags from './NameAndTags';
 import { withStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
-import {setTagSelected, setCharacNameSelected } from '../../../../../store/minifigs-filter';
+import {setTagSelected, setCharacNameSelected } from '../../../../../stores/minifigs-filter';
 
 const styles = () => ({
     chip: {
