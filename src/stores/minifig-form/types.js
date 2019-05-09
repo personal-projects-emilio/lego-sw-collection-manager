@@ -1,5 +1,4 @@
 export const types = {
-  SET: {
-    MINIFIGFORM: "SET.MINIFIGFORM"
-  }
+  SET_MINIFIGFORM: 'SET_MINIFIGFORM',
+  UPDATE_INPUT: 'UPDATE_INPUT'
 };

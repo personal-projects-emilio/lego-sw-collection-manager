@@ -1,11 +1,12 @@
 import reducer from ".";
 import { types } from ".";
+import minifigForm from '../../templates/minifigForm';
 
 describe("minifigFormReducer", () => {
   let initialState;
   beforeEach(() => {
     initialState = {
-      minifigForm: null,
+      template: minifigForm,
       formIsValid: false
     };
   });
@@ -14,14 +15,14 @@ describe("minifigFormReducer", () => {
     expect(reducer(undefined, {})).toEqual(initialState);
   });
 
-  it("should set the minifigForm", () => {
+  it("should set the template", () => {
     const action = {
-      type: types.SET.MINIFIGFORM,
-      minifigForm: 'This is a test'
+      type: types.SET_MINIFIGFORM,
+      template: minifigForm
     };
-    expect(reducer(initialState, action)).toEqual({
+    expect(reducer(undefined, action)).toEqual({
       ...initialState,
-      minifigForm: 'This is a test'
+      template: minifigForm
     });
   });
 });
