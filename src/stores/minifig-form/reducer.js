@@ -1,17 +1,20 @@
-import { types } from ".";
+import { types, cases } from ".";
+import minifigForm from '../../templates/minifigForm';
 
 const initialState = {
-  minifigForm: null,
+  template: minifigForm,
   formIsValid: false
 };
 
-const counterReducer = (state = initialState, action) => {
+const minifigFormReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.SET.MINIFIGFORM:
-      return {...state, minifigForm: action.minifigForm}
+    case types.SET_MINIFIGFORM:
+      return {...state, template: action.template}
+    case types.UPDATE_INPUT:
+      return cases.updateInput(state, action);
     default:
       return state;
   }
 };
 
-export default counterReducer;
+export default minifigFormReducer;
