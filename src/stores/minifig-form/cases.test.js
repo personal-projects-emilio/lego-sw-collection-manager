@@ -14,7 +14,8 @@ describe('cases/minifig-form', () => {
               required: true
             }
           }
-        }
+        },
+        formIsValid: false
       };
       const action = {
         value: 'test',
@@ -28,7 +29,8 @@ describe('cases/minifig-form', () => {
             valid: true,
             touched: true
           }
-        }
+        },
+        formIsValid: true
       });
     });
   });
