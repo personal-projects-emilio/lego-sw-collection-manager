@@ -1,19 +1,24 @@
 export default {
   reference: {
-    type: 'input',
+    type: 'textfield',
     value: '',
     label: 'Reference',
     placeholder: 'Minifig reference (ex: sw0001a)',
     validation: {
       required: true, 
-      isAReference: true,
-      reference: null
+      isAReference: ['sw0001', 'sw0001a'],
+      reference: 'sw0001'
     },
     valid: false,
-    touched: false
+    touched: false,
+    errorText: null,
+    muiProps: {
+      required: true,
+      variant: 'outlined'
+    }
   },
   name: {
-    type: 'input',
+    type: 'textfield',
     value: '',
     label: 'Name',
     placeholder: 'Minifig name (ex: Battle Droid Tan with Back Plate)',
@@ -21,7 +26,12 @@ export default {
       required: true, 
     },
     valid: false,
-    touched: false
+    touched: false,
+    errorText: null,
+    muiProps: {
+      required: true,
+      variant: 'outlined'
+    }
   },
   characterName: {
     type: 'autocomplete',
@@ -35,7 +45,8 @@ export default {
       required: true
     },
     valid: false,
-    touched: false
+    touched: false,
+    errorText: null
   },
   tags: {
     type: 'autocomplete',
@@ -48,7 +59,8 @@ export default {
     },
     validation: {},
     valid: true,
-    touched: false
+    touched: false,
+    errorText: null
   },
   possessed: {
     type: 'switch',
@@ -58,6 +70,7 @@ export default {
       required: true
     },
     valid: true,
-    touched: false
+    touched: false,
+    errorText: null
   }
 }

@@ -25,4 +25,35 @@ describe("minifigFormReducer", () => {
       template: minifigForm
     });
   });
+
+  it("should update an input", () => {
+    const state = {
+      template: {
+        key1: {
+          value: 'test',
+          valid: true,
+          touched: true,
+          errorText: null,
+          validation: {
+            required: true
+          }
+        }
+      }
+    }
+    const action = {
+      type: types.UPDATE_INPUT,
+      value: '',
+      inputKey: 'key1'
+    };
+    expect(reducer(state, action)).toEqual({
+      template: {
+        key1: {
+          ...state.template.key1,
+          value: '',
+          valid: false,
+          errorText: 'This field is required'
+        }
+      }
+    });
+  });
 });
