@@ -1,6 +1,6 @@
 import { getStatistics, getTagsAndCharacNames } from "./minifigs";
 
-describe('utility', () => {
+describe('services/minifigs', () => {
     const minifigs = {
       sw0001a: {
         characterName: "Battle Droid",
