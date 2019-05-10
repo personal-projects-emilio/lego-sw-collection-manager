@@ -27,3 +27,11 @@ export const checkValidity = (value, rules) => {
 
   return validity;
 }
+
+export const getFormIsValid = template => {
+  let isValid = true;
+  Object.keys(template).forEach(inputKey => {
+    isValid = template[inputKey].valid && isValid;
+  })
+  return isValid;
+}
