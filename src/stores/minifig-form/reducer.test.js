@@ -38,7 +38,8 @@ describe("minifigFormReducer", () => {
             required: true
           }
         }
-      }
+      },
+      formIsValid: true
     }
     const action = {
       type: types.UPDATE_INPUT,
@@ -53,7 +54,8 @@ describe("minifigFormReducer", () => {
           valid: false,
           errorText: 'This field is required'
         }
-      }
+      },
+      formIsValid: false
     });
   });
 });

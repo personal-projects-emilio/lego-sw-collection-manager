@@ -1,5 +1,5 @@
 import dotProp from 'dot-prop-immutable';
-import { checkValidity } from '../../services/form';
+import { checkValidity, getFormIsValid } from '../../services/form';
 
 export const updateInput = (state, action) => {
   const { value, inputKey } = action;
@@ -11,6 +11,10 @@ export const updateInput = (state, action) => {
     touched: true,
     errorText: validity.errorText
   });
-  return dotProp.set(state, 'template', updatedTemplate);
+  return {
+    ...state,
+    template: updatedTemplate,
+    formIsValid: getFormIsValid(updatedTemplate)
+  }
 };
 

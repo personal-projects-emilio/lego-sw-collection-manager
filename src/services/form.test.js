@@ -1,5 +1,5 @@
 
-import { checkValidity } from "./form";
+import { checkValidity, getFormIsValid } from "./form";
 
 describe('services/form', () => {
   describe('checkValidity', () => {
@@ -32,5 +32,20 @@ describe('services/form', () => {
         errorText: 'This is not a minifig reference: sw[0-9]{4}[abcds]'
       });
     })
-  })
+  });
+  describe('getFormIsValid', () => {
+    it('should return the form validity', () => {
+      let template = {
+        key1: {
+          valid: true
+        },
+        key2: {
+          valid: false
+        }
+      };
+      expect(getFormIsValid(template)).toBeFalsy();
+      template.key2.valid = true;
+      expect(getFormIsValid(template)).toBeTruthy();
+    });
+  });
 });
