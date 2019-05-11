@@ -1,5 +1,5 @@
 import { types } from ".";
-import * as actions from "./action";
+import * as actions from "./actions";
 import minifigForm from '../../templates/minifigForm';
 
 describe("minifig-form/action", () => {
