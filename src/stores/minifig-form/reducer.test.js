@@ -6,7 +6,7 @@ describe("minifigFormReducer", () => {
   let initialState;
   beforeEach(() => {
     initialState = {
-      template: minifigForm,
+      template: null,
       formIsValid: false
     };
   });
@@ -56,6 +56,20 @@ describe("minifigFormReducer", () => {
         }
       },
       formIsValid: false
+    });
+  });
+
+  it("should resset the template", () => {
+    const state = {
+      ...initialState,
+      template: 'Anything',
+      formIsValid: true
+    }
+    const action = {
+      type: types.RESET_MINIFIGFORM,
+    };
+    expect(reducer(state, action)).toEqual({
+      ...initialState,
     });
   });
 });

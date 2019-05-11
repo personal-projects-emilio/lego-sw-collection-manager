@@ -70,7 +70,7 @@ export const miscellaneous = props => (
         color="primary"
         variant="contained"
         className={props.classes.button}
-        disabled
+        onClick={props.setAddMinifigForm}
       >
         Add a minifig
         <Icon className={props.classes.icon}>add_circle</Icon>
@@ -96,7 +96,8 @@ miscellaneous.propTypes = {
   numberOwned: PropTypes.number,
   percentageOwned: PropTypes.number,
   minifigs: PropTypes.object,
-  setPossessionToAll: PropTypes.func.isRequired
+  setPossessionToAll: PropTypes.func.isRequired,
+  setAddMinifigForm: PropTypes.func.isRequired
 };
 
 export default miscellaneous;

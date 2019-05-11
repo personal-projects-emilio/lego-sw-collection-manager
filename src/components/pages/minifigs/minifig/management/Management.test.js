@@ -15,7 +15,8 @@ describe('<Management />', () => {
       },
       reference: 'sw0001',
       togglePossession: jest.fn(),
-      deleteMinifig: jest.fn()
+      deleteMinifig: jest.fn(),
+      setEditMinifigForm: jest.fn(),
     }
   });
   it('should render the minifig management part', () => {
@@ -34,6 +35,11 @@ describe('<Management />', () => {
     const wrapper = shallow(<Management {...props} />);
     wrapper.find(Checkbox).simulate('change');
     expect(props.togglePossession).toHaveBeenCalled();
+    wrapper.find(IconButton).at(0).simulate('click');
+    expect(props.setEditMinifigForm).toHaveBeenCalledWith({
+      reference: props.reference,
+      ...props.details
+    });
     wrapper.find(IconButton).at(1).simulate('click');
     wrapper.find(Button).at(0).simulate('click');
     expect(props.deleteMinifig).toHaveBeenCalled();
