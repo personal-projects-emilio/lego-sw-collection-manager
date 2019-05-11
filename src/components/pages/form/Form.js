@@ -4,7 +4,7 @@ import Inputs from "../../commons/inputs";
 
 export const app = props => (
   <Grid container>
-    {Object.keys(props.minifigForm).map(inputKey => (
+    {props.minifigForm && Object.keys(props.minifigForm).map(inputKey => (
       <Inputs
         key={inputKey}
         inputKey={inputKey}

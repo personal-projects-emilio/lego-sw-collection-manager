@@ -6,8 +6,8 @@ export default {
     placeholder: 'Minifig reference (ex: sw0001a)',
     validation: {
       required: true, 
-      isAReference: ['sw0001', 'sw0001a'],
-      reference: 'sw0001'
+      isAReference: [],
+      reference: null
     },
     valid: false,
     touched: false,

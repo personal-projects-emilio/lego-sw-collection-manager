@@ -14,7 +14,8 @@ describe('<Miscellaneous />', () => {
         button: 'button',
         linearProgress: 'linearProgress'
       },
-      setPossessionToAll: jest.fn()
+      setPossessionToAll: jest.fn(),
+      setAddMinifigForm: jest.fn()
     }
     const wrapper = shallow(<Miscellaneous {...props} />);
     expect(wrapper.find(Grid)).toHaveLength(4);
@@ -29,5 +30,7 @@ describe('<Miscellaneous />', () => {
     expect(props.setPossessionToAll).toHaveBeenCalledWith(true);
     wrapper.find(Fab).at(1).simulate('click');
     expect(props.setPossessionToAll).toHaveBeenCalledWith(false);
+    wrapper.find(Button).at(0).simulate('click');
+    expect(props.setAddMinifigForm).toHaveBeenCalled();
   });
 });

@@ -1,8 +1,7 @@
 import { types, cases } from ".";
-import minifigForm from '../../templates/minifigForm';
 
 const initialState = {
-  template: minifigForm,
+  template: null,
   formIsValid: false
 };
 
@@ -12,6 +11,8 @@ const minifigFormReducer = (state = initialState, action) => {
       return {...state, template: action.template}
     case types.UPDATE_INPUT:
       return cases.updateInput(state, action);
+    case types.RESET_MINIFIGFORM:
+      return {...state, template: null, formIsValid: false}
     default:
       return state;
   }
