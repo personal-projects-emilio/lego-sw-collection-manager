@@ -9,6 +9,6 @@ export {
   togglePossession,
   deleteMinifig,
   setPossessionToAll
-} from './action';
+} from './actions';
 export { types } from './types';
 export default minifigsReducer;

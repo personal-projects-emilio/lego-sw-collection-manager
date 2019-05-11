@@ -1,5 +1,5 @@
 import { types } from '.';
-import * as actions from './action';
+import * as actions from './actions';
 
 describe('minifigs-filter/action', () => {
     let dispatch;
