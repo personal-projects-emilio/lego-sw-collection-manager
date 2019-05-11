@@ -21,6 +21,6 @@ describe('<TextField />', () => {
     const wrapper = shallow(<CustomTextField {...props} />);
     expect(wrapper.find(TextField)).toHaveLength(1);
     wrapper.find(TextField).first().simulate('change', {target: {value: 'newValue'}});
-    expect(props.inputChange).toHaveBeenCalledWith('newValue', 'test');
+    expect(props.inputChange).toHaveBeenCalledWith('newValue');
   });
 });
