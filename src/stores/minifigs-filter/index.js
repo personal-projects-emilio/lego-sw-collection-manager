@@ -10,6 +10,6 @@ export {
   manageSearchParams,
   resetFilters,
   checkTagAndCharacAfterDelete
-} from './action';
+} from './actions';
 export { types } from './types';
 export default minifigsFilterReducer;

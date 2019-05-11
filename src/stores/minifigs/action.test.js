@@ -1,7 +1,7 @@
 import { types } from '.';
 import axios from '../../axios';
 import MockAdapter from 'axios-mock-adapter';
-import * as actions from './action';
+import * as actions from './actions';
 
 describe('action/minifigs', () => {
     let dispatch;

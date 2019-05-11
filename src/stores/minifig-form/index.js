@@ -4,6 +4,6 @@ export { cases };
 export {
   setMinifigForm,
   updateInput
-} from './action';
+} from './actions';
 export { types } from './types';
 export default minifigFormReducer;
