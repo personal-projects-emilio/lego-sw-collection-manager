@@ -38,29 +38,42 @@ export default {
     value: '',
     label: 'Character name',
     placeholder: 'Character name (ex: Battle Droid)',
-    autocompleteConfig: {
-      creatable: true
+    config: {
+      options: []
     },
     validation: {
       required: true
     },
     valid: false,
     touched: false,
-    errorText: null
+    errorText: null,
+    muiProps: {
+      required: true,
+      variant: 'outlined',
+      InputLabelProps: {
+        shrink: true
+      },
+    }
   },
   tags: {
     type: 'autocomplete',
-    value: '',
+    value: [],
     label: 'Tags',
     placeholder: 'Minifig tags (ex: Battle Droid, CIS, Droid)',
-    autocompleteConfig: {
-      creatable: true,
-      multi: true
+    config: {
+      multi: true,
+      options: []
     },
     validation: {},
     valid: true,
     touched: false,
-    errorText: null
+    errorText: null,
+    muiProps: {
+      variant: 'outlined',
+      InputLabelProps: {
+        shrink: true
+      },
+    }
   },
   possessed: {
     type: 'switch',

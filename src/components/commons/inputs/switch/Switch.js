@@ -8,7 +8,7 @@ export const customSwitch = props => (
       <Switch
         checked={props.value}
         color="primary"
-        onChange={(_e, val) => props.inputChange(val, props.inputKey)}
+        onChange={(_e, val) => props.inputChange(val)}
         value={props.value}
       />
     }
