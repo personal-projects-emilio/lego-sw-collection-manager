@@ -2,6 +2,7 @@ import { withStyles } from '@material-ui/core';
 import Miscellaneous from './Miscellaneous';
 import { connect } from 'react-redux';
 import { setPossessionToAll } from '../../../../../stores/minifigs';
+import { setAddMinifigForm } from '../../../../../stores/minifig-form';
 
 const mapStateToProps = state => ({
     totalNumber: state.minifigs.totalNumber,
@@ -11,7 +12,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setPossessionToAll: possessed => dispatch(setPossessionToAll(possessed))
+  setPossessionToAll: possessed => dispatch(setPossessionToAll(possessed)),
+  setAddMinifigForm: () => dispatch(setAddMinifigForm())
 });
 
 const styles = theme => ({

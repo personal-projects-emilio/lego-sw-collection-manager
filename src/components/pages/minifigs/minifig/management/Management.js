@@ -15,12 +15,20 @@ import styles from "./Management.module.css";
 
 export const management = props => {
   const [open, setOpen] = useState(false);
-  const { details, reference, deleteMinifig, togglePossession } = props;
+  const { details, reference, deleteMinifig, togglePossession, setEditMinifigForm } = props;
 
   const deleteHandler = () => {
     setOpen(false);
     deleteMinifig(reference);
   };
+
+  const editHandler = () => {
+    const minifig = {
+      reference,
+      ...details
+    }
+    setEditMinifigForm(minifig);
+  }
   return (
     <Grid container justify="space-evenly">
       <Tooltip title="Possession" aria-label="Possession">
@@ -31,11 +39,9 @@ export const management = props => {
         />
       </Tooltip>
       <Tooltip title="Edit" aria-label="Edit">
-        <span>
-          <IconButton disabled>
+          <IconButton onClick={editHandler}>
             <Icon>edit</Icon>
           </IconButton>
-        </span>
       </Tooltip>
       <Tooltip title="Delete" aria-label="Delete">
         <IconButton onClick={() => setOpen(true)}>
@@ -69,7 +75,8 @@ management.propTypes = {
     tags: PropTypes.arrayOf(PropTypes.string)
   }),
   togglePossession: PropTypes.func.isRequired,
-  deleteMinifig: PropTypes.func.isRequired
+  deleteMinifig: PropTypes.func.isRequired,
+  setEditMinifigForm: PropTypes.func.isRequired
 };
 
 export default management;
