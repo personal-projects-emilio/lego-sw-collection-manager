@@ -44,3 +44,8 @@ export const setPossessionToAll = possessed => ({
     type: types.SET.POSSESION_TO_ALL,
     possessed
 });
+
+export const addOrEditAMinifig = minifigs => ({
+    type: types.ADD_OR_EDIT_A_MINIFIG,
+    minifigs
+});

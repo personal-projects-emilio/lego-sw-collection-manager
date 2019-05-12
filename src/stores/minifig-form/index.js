@@ -6,7 +6,8 @@ export {
   updateInput,
   setAddMinifigForm,
   setEditMinifigForm,
-  resetMinifigForm
+  resetMinifigForm,
+  submitMinifigForm
 } from './actions';
 export { types } from './types';
 export default minifigFormReducer;

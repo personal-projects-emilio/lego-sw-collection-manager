@@ -2,6 +2,7 @@ import { types } from '.';
 import minifigForm from '../../templates/minifigForm';
 import dotProp from 'dot-prop-immutable';
 import isEqual from 'lodash.isequal';
+import { addOrEditAMinifig } from '../minifigs';
 
 export const setMinifigForm = (template) => ({
     type: types.SET_MINIFIGFORM,
@@ -50,4 +51,29 @@ export const setEditMinifigForm = minifig => async (dispatch, getState) => {
         !isEqual(oldValue, newValue)
             && dispatch(updateInput(newValue, inputKey));
     })
+}
+
+export const submitMinifigForm = () => (dispatch, getState) => {
+    const state = getState();
+    const { template } = state.minifigForm;
+    let { minifigs } = state.minifigs;
+    const oldReference = template.reference.validation.reference;
+    const reference = template.reference.value;
+    const minifig = {
+        name: template.name.value,
+        characterName: template.characterName.value,
+        tags: template.tags.value,
+        possessed: template.possessed.value
+    }
+
+    minifigs = dotProp.merge(minifigs, reference, minifig);
+
+    oldReference && oldReference !== reference && delete minifigs[oldReference];
+    
+    let updatedMinifigs = {};
+    Object.keys(minifigs).sort().map(minifigReference =>
+        updatedMinifigs[minifigReference] = minifigs[minifigReference]
+    );
+    dispatch(addOrEditAMinifig(updatedMinifigs));
+    dispatch(resetMinifigForm());
 }

@@ -60,4 +60,10 @@ describe('action/minifigs', () => {
             possessed: true
         });
     });
+    it('should return a addOrEditAMinifig action', () => {
+        expect(actions.addOrEditAMinifig({test: 'test'})).toEqual({
+            type: types.ADD_OR_EDIT_A_MINIFIG,
+            minifigs: {test: 'test'}
+        });
+    });
 });

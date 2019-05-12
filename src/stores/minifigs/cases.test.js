@@ -132,4 +132,59 @@ describe('cases/minifigs', () => {
       }
     );
   });
+  it('should add/edit a minifig', () => {
+    let initState = {
+      minifigs: {
+        sw0001a: {
+          possessed: true,
+          characterName: 'Battle Droid',
+          tags: ['Droid']
+        },
+        sw0001b: {
+            possessed: false,
+            characterName: 'Battle Droid',
+            tags: ['Droid']
+        }
+      },
+      numberOwned: 1,
+      percentageOwned: 50,
+      totalNumber: 2,
+    };
+    const action = {
+      minifigs: {
+        sw0001a: {
+          possessed: true,
+          characterName: 'Battle Droid',
+          tags: ['Droid']
+        },
+        sw0001b: {
+            possessed: true,
+            characterName: 'Battle Droid',
+            tags: ['Droid']
+        }
+      }
+    }
+    expect(cases.addOrEditAMinifig(initState, action)).toEqual(
+      {
+        ...initState,
+        minifigs: {
+          sw0001a: {
+            possessed: true,
+            characterName: 'Battle Droid',
+            tags: ['Droid']
+          },
+          sw0001b: {
+              possessed: true,
+              characterName: 'Battle Droid',
+              tags: ['Droid']
+          }
+        },
+        numberOwned: 2,
+        percentageOwned: 100,
+        totalNumber: 2,
+        tags: [{name: 'Droid', amount: 2}],
+        characNames: [{name: 'Battle Droid', amount: 2}]
+      }
+    );
+  });
 });
