@@ -28,6 +28,8 @@ const counterReducer = (state = initialState, action) => {
             return cases.deleteMinifig(state, action);
         case types.SET.POSSESION_TO_ALL: 
             return cases.setPossessionToAll(state, action);
+        case types.ADD_OR_EDIT_A_MINIFIG:
+            return cases.addOrEditAMinifig(state, action);
         default:
             return state;
     }

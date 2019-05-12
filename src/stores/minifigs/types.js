@@ -10,5 +10,6 @@ export const types = {
     },
     DELETE: {
         MINIFIG: 'DELETE.MINIFIG'
-    }
+    },
+    ADD_OR_EDIT_A_MINIFIG: 'ADD_OR_EDIT_A_MINIFIG'
 }

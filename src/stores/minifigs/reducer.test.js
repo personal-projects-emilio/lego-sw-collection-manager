@@ -162,4 +162,52 @@ describe("reducer/minifigs", () => {
 			percentageOwned: 0,
     });
   });
+  it("should add a minifig", () => {
+    const action = {
+      type: types.ADD_OR_EDIT_A_MINIFIG,
+      minifigs: {
+        sw0001a: {
+          possessed: false,
+          characterName: "Battle Droid",
+          tags: ["Droid"]
+        },
+        sw0001b: {
+          possessed: false,
+          characterName: "Battle Droid",
+          tags: ["Droid"]
+        }
+      },
+    };
+    const initState = {
+      ...initialState,
+      minifigs: {
+        sw0001a: {
+          possessed: false,
+          characterName: "Battle Droid",
+          tags: ["Droid"]
+        }
+      },
+      numberOwned: 0,
+      percentageOwned: 0,
+      totalNumber: 1
+    };
+    expect(reducer(initState, action)).toEqual({
+      ...initState,
+      minifigs: {
+        sw0001a: {
+          possessed: false,
+          characterName: "Battle Droid",
+          tags: ["Droid"]
+        },
+        sw0001b: {
+          possessed: false,
+          characterName: "Battle Droid",
+          tags: ["Droid"]
+        }
+      },
+      totalNumber: 2,
+      tags: [{name: 'Droid', amount: 2}],
+      characNames: [{name: 'Battle Droid', amount: 2}]
+    });
+  });
 });

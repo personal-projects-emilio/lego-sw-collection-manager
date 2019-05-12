@@ -1,5 +1,5 @@
 import dotProp from 'dot-prop-immutable';
-import { getTagsAndCharacNames } from '../../services/minifigs';
+import { getTagsAndCharacNames, getStatistics } from '../../services/minifigs';
 
 export const togglePossession = (state, action) => {
   const { reference } = action;
@@ -49,5 +49,20 @@ export const setPossessionToAll = (state, action) => {
     minifigs: updatedMinifigs,
     numberOwned,
     percentageOwned
+  }
+}
+
+export const addOrEditAMinifig = (state, action) => {
+  const { minifigs } = action;
+  const data = getTagsAndCharacNames(minifigs);
+  const statistics = getStatistics(minifigs);
+  return {
+    ...state,
+    minifigs,
+    numberOwned: statistics.numberOwned,
+    totalNumber: statistics.totalNumber,
+    percentageOwned: statistics.percentageOwned,
+    tags: data.tags,
+    characNames: data.characNames
   }
 }
