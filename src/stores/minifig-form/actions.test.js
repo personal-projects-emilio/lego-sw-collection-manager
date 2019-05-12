@@ -66,5 +66,52 @@ describe("minifig-form/action", () => {
     expect(getState).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledTimes(4);
   });
-
+  it("should set the minifig form for an edit", () => {
+    getState = jest.fn(() => ({
+      minifigs: {
+        minifigs: {
+          sw0001: {},
+          sw0002: {}
+        }
+      },
+      minifigForm: {
+        template: {
+          reference: {
+            value: 'sw0001a',
+            validation: {
+              reference: 'sw0001'
+            }
+          },
+          name: {
+            value: 'test'
+          },
+          characterName: {
+            value: 'test'
+          },
+          tags: {
+            value: []
+          },
+          possessed: {
+            value: false
+          }
+        }
+      }
+    }));
+    
+    actions.submitMinifigForm()(dispatch, getState);
+    expect(getState).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledTimes(2);
+    expect(dispatch).toHaveBeenNthCalledWith(1, {
+      type: 'ADD_OR_EDIT_A_MINIFIG',
+      minifigs: {
+        sw0001a: {
+          name: 'test',
+          characterName: 'test',
+          tags: [],
+          possessed: false
+        },
+        sw0002: {}
+      }
+    })
+  });
 });

@@ -1,15 +1,17 @@
 import MinifigFormModal from "./MinifigFormModal";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core";
-import { updateInput, resetMinifigForm } from "../../../../stores/minifig-form";
+import { updateInput, resetMinifigForm, submitMinifigForm } from "../../../../stores/minifig-form";
 
 const mapStateToProps = state => ({
-  template: state.minifigForm.template
+  template: state.minifigForm.template,
+  formIsValid: state.minifigForm.formIsValid
 });
 
 const mapDispatchToProps = dispatch => ({
   updateInput: (val, inputKey) => dispatch(updateInput(val, inputKey)),
-  resetMinifigForm: () => dispatch(resetMinifigForm())
+  resetMinifigForm: () => dispatch(resetMinifigForm()),
+  submitMinifigForm: () => dispatch(submitMinifigForm())
 });
 
 const styles = () => ({
@@ -20,7 +22,7 @@ const styles = () => ({
     left: '50%',
     transform: 'translate(-50%, -50%)',
     maxHeight: '80vh',
-    overflow: 'scroll'
+    overflow: 'auto'
   }
 });
 
