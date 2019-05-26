@@ -31,14 +31,13 @@ describe('action/minifigs', () => {
             data: {test:'Minifigs'}
         });
     });
-    it('should fetch minifigs from DB', () => {
+    it('should fetch minifigs from DB', async () => {
         const dispatch = jest.fn();
         mock.onGet('/minifigs.json').reply(200, {
-            data: {
-                test: 'Fetch Minifigs from DB'
-            }
+            ref: {}
         })
-        actions.fetchMinifigs()(dispatch)
+        await actions.fetchMinifigs()(dispatch)
+        expect(dispatch).toHaveBeenCalledTimes(3);
     });
     it('should return a togglePossession action', () => {
         expect(actions.togglePossession('sw0001a')).toEqual({

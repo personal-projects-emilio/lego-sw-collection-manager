@@ -1,3 +1,5 @@
+import dotProp from 'dot-prop-immutable';
+
 export const checkValidity = (value, rules) => {
   let validity = {valid: true, errorText: null}
   const trimValue = typeof value === 'string' ? value.trim() : value;
@@ -34,4 +36,22 @@ export const getFormIsValid = template => {
     isValid = template[inputKey].valid && isValid;
   })
   return isValid;
-}
+};
+
+export const updateInput = (state, action) => {
+  const { value, inputKey } = action;
+  const { template } = state;
+  const validity = checkValidity(value, template[inputKey].validation);
+  const updatedTemplate = dotProp.merge(template, inputKey, {
+    value,
+    valid: validity.valid,
+    touched: true,
+    errorText: validity.errorText
+  });
+  return {
+    ...state,
+    template: updatedTemplate,
+    formIsValid: getFormIsValid(updatedTemplate)
+  }
+};
+

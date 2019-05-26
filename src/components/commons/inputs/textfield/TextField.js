@@ -11,6 +11,7 @@ export const customTextField = props => (
     InputLabelProps={{
       shrink: props.placeholder && true
     }}
+    type={props.config && props.config.type}
     onChange={e => props.inputChange(e.target.value)}
     error={!props.valid && props.touched}
     helperText={!props.valid && props.touched && props.errorText}

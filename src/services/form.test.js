@@ -1,5 +1,5 @@
 
-import { checkValidity, getFormIsValid } from "./form";
+import { checkValidity, getFormIsValid, updateInput } from "./form";
 
 describe('services/form', () => {
   describe('checkValidity', () => {
@@ -46,6 +46,39 @@ describe('services/form', () => {
       expect(getFormIsValid(template)).toBeFalsy();
       template.key2.valid = true;
       expect(getFormIsValid(template)).toBeTruthy();
+    });
+  });
+  describe('updateInput', () => {
+    it('should update an input', () => {
+      const state = {
+        template: {
+          key1: {
+            value: '',
+            valid: false,
+            touched: false,
+            errorText: null,
+            validation: {
+              required: true
+            }
+          }
+        },
+        formIsValid: false
+      };
+      const action = {
+        value: 'test',
+        inputKey: 'key1'
+      };
+      expect(updateInput(state, action)).toEqual({
+        template: {
+          key1: {
+            ...state.template.key1,
+            value: 'test',
+            valid: true,
+            touched: true
+          }
+        },
+        formIsValid: true
+      });
     });
   });
 });
