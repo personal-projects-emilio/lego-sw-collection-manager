@@ -14,7 +14,10 @@ describe('<TextField />', () => {
       placeholder: 'Test placeholder',
       errorText: 'Test error text',
       valid: false,
-      touched: true
+      touched: true,
+      config: {
+        type: 'number'
+      }
     }
   });
   it('should render a custom textfield', () => {

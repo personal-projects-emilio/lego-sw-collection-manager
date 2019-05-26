@@ -1,13 +1,17 @@
-import React from "react";
-import Providers from "./providers";
+import React, { useEffect } from "react";
 import Routes from "./routes";
 import AppBar from "./components/commons/app-bar";
 
-export const app = () => (
-    <Providers>
-        <AppBar />
-        <Routes />
-    </Providers>
-)
+export const app = props => {
+  useEffect(() => {
+    props.tryAutoSignup();
+  }, []);
+  return (
+    <>
+      <AppBar />
+      <Routes />
+    </>
+  );
+};
 
 export default app;

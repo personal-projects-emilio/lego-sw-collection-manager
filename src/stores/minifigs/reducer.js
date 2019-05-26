@@ -9,7 +9,7 @@ const initialState = {
     characNames: null
 };
 
-const counterReducer = (state = initialState, action) => {
+const minifigsReducer = (state = initialState, action) => {
     switch ( action.type ) {
         case types.SET.MINIFIGS : 
             return {...state, minifigs: action.minifigs}
@@ -35,4 +35,4 @@ const counterReducer = (state = initialState, action) => {
     }
 };
 
-export default counterReducer;
+export default minifigsReducer;

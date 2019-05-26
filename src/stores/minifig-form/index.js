@@ -1,6 +1,4 @@
 import minifigFormReducer from './reducer';
-import * as cases from './cases';
-export { cases };
 export {
   setMinifigForm,
   updateInput,
