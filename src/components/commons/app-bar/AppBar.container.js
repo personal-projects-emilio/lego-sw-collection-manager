@@ -1,11 +1,25 @@
-import AppBar from './AppBar';
-import { withStyles } from '@material-ui/core';
-import { withRouter } from 'react-router-dom';
+import AppBar from "./AppBar";
+import { withStyles } from "@material-ui/core";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { logout, setAuthRedirectPath } from "../../../stores/auth";
+
+const mapStateToProps = state => ({
+  authenticate: state.auth.token,
+});
+
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logout()),
+  setAuthRedirectPath: path => dispatch(setAuthRedirectPath(path))
+});
 
 const styles = () => ({
-    fullHeight: {
-        height: '100%'
-    }
-})
+  fullHeight: {
+    height: "100%"
+  }
+});
 
-export default withRouter(withStyles(styles)(AppBar));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(withStyles(styles)(AppBar)));

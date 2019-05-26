@@ -18,13 +18,14 @@ export const setTagsAndCharacterNames = data => ({
     data
 });
 
-export const fetchMinifigs = () => dispatch => {
-    axios.get(`/minifigs.json`)
-        .then(res => {
-            dispatch(setMinifigs(res.data))
-            dispatch(setStatistics(getStatistics(res.data)))
-            dispatch(setTagsAndCharacterNames(getTagsAndCharacNames(res.data)));
-        })
+export const fetchMinifigs = () => async dispatch => {
+    try {
+        const res = await axios.get('/minifigs.json');
+        dispatch(setMinifigs(res.data))
+        dispatch(setStatistics(getStatistics(res.data)))
+        dispatch(setTagsAndCharacterNames(getTagsAndCharacNames(res.data)));
+    } catch (err) {
+    }
 };
 
 export const togglePossession = (reference) => ({
