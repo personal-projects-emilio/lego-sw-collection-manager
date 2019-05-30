@@ -47,12 +47,23 @@ export const togglePossession = reference => async (dispatch, getState) => {
   }
 };
 
-export const deleteMinifig = reference => dispatch => {
-  dispatch(checkTagAndCharacAfterDelete(reference));
-  dispatch({
+export const deleteMinifig = reference => async (dispatch, getState) => {
+  const state = getState();
+  const { token } = state.auth;
+  const action = {
     type: types.DELETE.MINIFIG,
     reference
-  });
+  }
+  if (token) {
+    try {
+      await axios.delete(`/minifigs/${reference}.json`);
+      dispatch(checkTagAndCharacAfterDelete(reference));
+      dispatch(action);
+    } catch (err) {}
+  } else {
+    dispatch(checkTagAndCharacAfterDelete(reference));
+    dispatch(action);
+  }
 };
 
 export const setPossessionToAll = possessed => ({
