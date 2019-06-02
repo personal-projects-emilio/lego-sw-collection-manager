@@ -10,6 +10,12 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
+const routes = [
+  {path: '/', label: 'Home'},
+  {path: '/minifigs', label: 'Minifigs'},
+  {path: '/frames', label: 'Frames'},
+]
+
 export const appBar = props => (
   <AppBar position="sticky" color="default" elevation={0}>
     <Toolbar>
@@ -29,13 +35,15 @@ export const appBar = props => (
             flexContainer: props.classes.fullHeight
           }}
         >
-          <Tab value="/" label="Home" component={Link} to="/" />
-          <Tab
-            value="/minifigs"
-            label="Minifigs"
-            component={Link}
-            to="/minifigs"
-          />
+          {routes.map(route => (
+            <Tab
+              key={`${route.label}-tab`}
+              value={route.path}
+              label={route.label}
+              component={Link}
+              to={route.path}
+            />
+          ))}
           {props.authenticate ? (
             <Tab
               value="/logout"

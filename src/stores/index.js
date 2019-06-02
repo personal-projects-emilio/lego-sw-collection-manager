@@ -7,6 +7,7 @@ import minifigsReducer from "./minifigs";
 import minifigsFilterReducer from "./minifigs-filter";
 import minifigFormReducer from "./minifig-form";
 import authReducer from "./auth";
+import framesReducer from './frames';
 
 export const history = createBrowserHistory();
 
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   minifigs: minifigsReducer,
   minifigsFilter: minifigsFilterReducer,
   minifigForm: minifigFormReducer,
-  auth: authReducer
+  auth: authReducer,
+  frames: framesReducer
 });
 
 const store = createStore(

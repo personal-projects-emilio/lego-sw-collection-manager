@@ -25,8 +25,8 @@ describe('<AppBar />', () => {
     expect(wrapper.find(Grid)).toHaveLength(1);
     expect(wrapper.find(Typography)).toHaveLength(1);
     expect(wrapper.find(Tabs)).toHaveLength(1);
-    expect(wrapper.find(Tab)).toHaveLength(3);
-    wrapper.find(Tab).at(2).simulate('click');
+    expect(wrapper.find(Tab)).toHaveLength(4);
+    wrapper.find(Tab).at(3).simulate('click');
     expect(props.setAuthRedirectPath).toHaveBeenCalledWith(props.location.pathname);
   });
   it('should render the AppBar with logout tab', () => {
@@ -37,8 +37,8 @@ describe('<AppBar />', () => {
     expect(wrapper.find(Grid)).toHaveLength(1);
     expect(wrapper.find(Typography)).toHaveLength(1);
     expect(wrapper.find(Tabs)).toHaveLength(1);
-    expect(wrapper.find(Tab)).toHaveLength(3);
-    wrapper.find(Tab).at(2).simulate('click');
+    expect(wrapper.find(Tab)).toHaveLength(4);
+    wrapper.find(Tab).at(3).simulate('click');
     expect(props.logout).toHaveBeenCalled();
   });
 });
