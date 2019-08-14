@@ -1,6 +1,6 @@
 import MinifigFormModal from "./MinifigFormModal";
 import { connect } from "react-redux";
-import { withStyles } from "@material-ui/core";
+import { withStyles } from '@material-ui/core/styles';
 import { updateInput, resetMinifigForm, submitMinifigForm } from "../../../../stores/minifig-form";
 
 const mapStateToProps = state => ({
