@@ -1,4 +1,4 @@
-import { withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import Miscellaneous from './Miscellaneous';
 import { connect } from 'react-redux';
 import { setPossessionToAll } from '../../../../../stores/minifigs';
@@ -18,13 +18,13 @@ const mapDispatchToProps = dispatch => ({
 
 const styles = theme => ({
     button: {
-      margin: theme.spacing.unit
+      margin: `${theme.spacing()}px !important`
     },
     icon: {
-      marginLeft: theme.spacing.unit
+      marginLeft: theme.spacing()
     },
     linearProgress: {
-      margin: `${theme.spacing.unit}px 0`
+      margin: theme.spacing(1, 0)
     },
   });
 

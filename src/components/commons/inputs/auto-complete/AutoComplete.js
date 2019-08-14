@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import CreatableSelect from "react-select/lib/Creatable";
+import CreatableSelect from 'react-select/creatable'
 import isEqual from "lodash.isequal";
 import {
   Control,
