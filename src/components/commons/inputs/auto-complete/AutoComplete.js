@@ -11,7 +11,7 @@ import {
   NoOptionsMessage
 } from "./components/Components";
 
-export const autoComplete = props => {
+export const AutoComplete = props => {
   const {
     config,
     value,
@@ -34,7 +34,7 @@ export const autoComplete = props => {
       const newValue = value && { label: value, value: value };
       !isEqual(newValue, itemValue) && setItemValue(newValue);
     }
-  }, [value]);
+  }, [value, config.multi, itemValue]);
 
   const changeHandler = (val, _action) => {
     setItemValue(val);
@@ -67,7 +67,7 @@ export const autoComplete = props => {
     />
   );
 };
-autoComplete.propTypes = {
+AutoComplete.propTypes = {
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string)
@@ -87,4 +87,4 @@ autoComplete.propTypes = {
   classes: PropTypes.object
 };
 
-export default autoComplete;
+export default AutoComplete;
