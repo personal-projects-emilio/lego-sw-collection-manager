@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import MinifigFormModal from "./MinifigFormModal";
 import Inputs from "../../../commons/inputs";
 import { Modal, Paper, Grid, Button } from "@material-ui/core";
@@ -10,6 +10,7 @@ describe("<MinifigFormModal />", () => {
     props = {
       template: {
         reference: {
+          type: "textfield",
           value: "sw0001",
           label: "Test minifig form modal",
           valid: true,
@@ -46,5 +47,10 @@ describe("<MinifigFormModal />", () => {
     expect(wrapper.find(Inputs)).toHaveLength(1);
     expect(wrapper.find(Button)).toHaveLength(1);
     expect(wrapper.find(Button).at(0).prop("children")).toBe('Add a minifig');
+  });
+  it("should update an input field", () => {
+    const wrapper = mount(<MinifigFormModal {...props} />);
+    wrapper.find("input").first().simulate("change", { target: { value: "test" } });
+    expect(props.updateInput).toHaveBeenCalledWith("test", "reference");
   });
 });

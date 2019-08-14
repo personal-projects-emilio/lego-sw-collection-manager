@@ -23,7 +23,7 @@ export const minifigFormModal = props => {
               <Inputs
                 key={inputKey}
                 inputKey={inputKey}
-                updateInput={updateInput}
+                updateInput={value => updateInput(value, inputKey)}
                 {...template[inputKey]}
               />
             ))}

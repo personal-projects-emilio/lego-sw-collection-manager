@@ -34,7 +34,7 @@ export const miscellaneous = props => (
     </Grid>
     <Grid item xs={12}>
       <Divider />
-      <Typography inline>Set possession to all:</Typography>
+      <Typography display="inline">Set possession to all:</Typography>
       <Tooltip
         title="Set all the minifigs to owned"
         placement="top"
