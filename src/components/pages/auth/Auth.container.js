@@ -1,6 +1,6 @@
 import Auth from "./Auth";
 import { connect } from "react-redux";
-import { withStyles } from "@material-ui/core";
+import { withStyles } from '@material-ui/core/styles';
 import { updateAuthInput, authenticate } from "../../../stores/auth";
 
 const mapStateToProps = state => ({

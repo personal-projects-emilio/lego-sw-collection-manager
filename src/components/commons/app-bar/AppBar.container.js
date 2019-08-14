@@ -1,5 +1,5 @@
 import AppBar from "./AppBar";
-import { withStyles } from "@material-ui/core";
+import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout, setAuthRedirectPath } from "../../../stores/auth";

@@ -31,7 +31,7 @@ export const Control = props => (
       inputComponent,
       inputProps: {
         className: props.selectProps.classes.input,
-        inputRef: props.innerRef,
+        ref: props.innerRef,
         children: props.children,
         ...props.innerProps
       }
