@@ -8,14 +8,17 @@ import Loader from "../../commons/loader";
 import MinifigsMenu from "./minifigs-menu";
 import MinifigFormModal from "./minifig-form-modal";
 
-export const minifigs = props => {
+export const Minifigs = props => {
   const {
     minifigs,
     activePage,
     numberPerPage,
     tagSelected,
     characNameSelected,
-    show
+    show,
+    fetchMinifigs,
+    manageSearchParams,
+    resetFilters
   } = props;
   const [currentMinifigs, setCurrentMinifigs] = useState([]);
   const [total, setTotal] = useState(0);
@@ -23,12 +26,12 @@ export const minifigs = props => {
   const [end, setEnd] = useState(null);
 
   useEffect(() => {
-    !minifigs && props.fetchMinifigs();
-    props.manageSearchParams();
+    !minifigs && fetchMinifigs();
+    manageSearchParams();
     return () => {
-      props.resetFilters();
+      resetFilters();
     };
-  }, []);
+  }, [fetchMinifigs, manageSearchParams, minifigs, resetFilters]);
 
   useEffect(() => {
     if (minifigs) {
@@ -63,7 +66,7 @@ export const minifigs = props => {
     newBegin !== begin && setBegin(newBegin);
     const newEnd = newBegin + numberPerPage;
     newEnd !== end && setEnd(newEnd);
-  }, [activePage, numberPerPage]);
+  }, [activePage, begin, end, numberPerPage]);
 
   return minifigs ? (
     <Grid
@@ -104,7 +107,7 @@ export const minifigs = props => {
   );
 };
 
-minifigs.propTypes = {
+Minifigs.propTypes = {
   minifigs: PropTypes.object,
   activePage: PropTypes.number.isRequired,
   numberPerPage: PropTypes.number.isRequired,
@@ -116,4 +119,4 @@ minifigs.propTypes = {
   resetFilters: PropTypes.func.isRequired
 };
 
-export default minifigs;
+export default Minifigs;
