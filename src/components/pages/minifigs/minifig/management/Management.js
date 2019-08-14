@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core";
 import styles from "./Management.module.css";
 
-export const management = props => {
+export const Management = props => {
   const [open, setOpen] = useState(false);
   const { details, reference, deleteMinifig, togglePossession, setEditMinifigForm } = props;
 
@@ -66,7 +66,7 @@ export const management = props => {
   );
 };
 
-management.propTypes = {
+Management.propTypes = {
   reference: PropTypes.string.isRequired,
   details: PropTypes.shape({
     characterName: PropTypes.string.isRequired,
@@ -79,4 +79,4 @@ management.propTypes = {
   setEditMinifigForm: PropTypes.func.isRequired
 };
 
-export default management;
+export default Management;

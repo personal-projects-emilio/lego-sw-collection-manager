@@ -2,10 +2,13 @@ import React, { useEffect } from "react";
 import Routes from "./routes";
 import AppBar from "./components/commons/app-bar";
 
-export const app = props => {
+export const App = props => {
+  const {tryAutoSignup} = props;
+  
   useEffect(() => {
-    props.tryAutoSignup();
-  }, []);
+    tryAutoSignup();
+  }, [tryAutoSignup]);
+
   return (
     <>
       <AppBar />
@@ -14,4 +17,4 @@ export const app = props => {
   );
 };
 
-export default app;
+export default App;
