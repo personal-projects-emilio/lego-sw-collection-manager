@@ -11,7 +11,7 @@ export const auth = props => (
           <Inputs
             key={inputKey}
             inputKey={inputKey}
-            updateInput={props.updateInput}
+            updateInput={value => props.updateInput(value, inputKey)}
             {...props.template[inputKey]}
           />
         ))}

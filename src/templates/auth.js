@@ -13,7 +13,8 @@ export default {
     muiProps: {
       required: true,
       variant: 'outlined'
-    }
+    },
+    className: "padding1rem"
   },
   password: {
     type: 'textfield',
@@ -32,5 +33,6 @@ export default {
       required: true,
       variant: 'outlined'
     },
+    className: "padding1rem"
   },
 }
