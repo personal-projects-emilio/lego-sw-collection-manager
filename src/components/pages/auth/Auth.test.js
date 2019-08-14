@@ -1,21 +1,26 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import Auth from './Auth';
+import React from "react";
+import { shallow, mount } from "enzyme";
+import Auth from "./Auth";
 import { Paper, Grid, Button } from "@material-ui/core";
 import Inputs from "../../commons/inputs";
 
-describe('<Auth />', () => {
-  it('should render the auh page', () => {
-    const props = {
+describe("<Auth />", () => {
+  let props;
+  beforeEach(() => {
+    props = {
       classes: {},
       template: {
         email: {
-          label: 'Email',
+          type: "textfield",
+          value: "",
+          label: "Email",
           valid: false,
           touched: false
         },
         password: {
-          label: 'Password',
+          type: "textfield",
+          value: "",
+          label: "Password",
           valid: false,
           touched: false
         }
@@ -23,11 +28,18 @@ describe('<Auth />', () => {
       updateInput: jest.fn(),
       authenticate: jest.fn(),
       formIsValid: false
-    }
+    };
+  });
+  it("should render the auh page", () => {
     const wrapper = shallow(<Auth {...props} />);
     expect(wrapper.find(Paper)).toHaveLength(1);
     expect(wrapper.find(Grid)).toHaveLength(1);
     expect(wrapper.find(Button)).toHaveLength(1);
     expect(wrapper.find(Inputs)).toHaveLength(2);
+  });
+  it("should update an auth input field", () => {
+    const wrapper = mount(<Auth {...props} />);
+    wrapper.find("input").first().simulate("change", { target: { value: "test" } });
+    expect(props.updateInput).toHaveBeenCalledWith("test", "email");
   });
 });

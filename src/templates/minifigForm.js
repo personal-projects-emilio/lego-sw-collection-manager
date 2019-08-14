@@ -15,7 +15,8 @@ export default {
     muiProps: {
       required: true,
       variant: 'outlined'
-    }
+    },
+    className: "padding10rem"
   },
   name: {
     type: 'textfield',
@@ -31,7 +32,8 @@ export default {
     muiProps: {
       required: true,
       variant: 'outlined'
-    }
+    },
+    className: "padding10rem"
   },
   characterName: {
     type: 'autocomplete',
@@ -53,7 +55,8 @@ export default {
       InputLabelProps: {
         shrink: true
       },
-    }
+    },
+    className: "padding10rem"
   },
   tags: {
     type: 'autocomplete',
@@ -73,7 +76,8 @@ export default {
       InputLabelProps: {
         shrink: true
       },
-    }
+    },
+    className: "padding10rem"
   },
   possessed: {
     type: 'switch',
@@ -84,6 +88,7 @@ export default {
     },
     valid: true,
     touched: false,
-    errorText: null
+    errorText: null,
+    className: "padding10rem"
   }
 }

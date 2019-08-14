@@ -5,12 +5,13 @@ import isEqual from "lodash.isequal";
 import Switch from "./switch";
 import TextField from "./textfield";
 import AutoComplete from "./auto-complete";
+import RadioButtons from "./radio-buttons";
 
 export const inputs = props => {
-  const { type, updateInput, value, inputKey } = props;
+  const { type, updateInput, value, className } = props;
 
   const inputChangeHandler = newValue => {
-    !isEqual(newValue, value) && updateInput(newValue, inputKey);
+    !isEqual(newValue, value) && updateInput(newValue);
   };
 
   let inputElement = null;
@@ -26,11 +27,14 @@ export const inputs = props => {
     case "switch":
       inputElement = <Switch {...props} inputChange={inputChangeHandler} />;
       break;
+      case "radiobuttons":
+        inputElement = <RadioButtons {...props} inputChange={inputChangeHandler} />;
+        break;
     default:
       inputElement = <span>Input not supported</span>;
   }
   return (
-    <Grid item xs={12} style={{ margin: "1rem" }}>
+    <Grid item xs={12} className={className ? className : ''}>
       {inputElement}
     </Grid>
   );
@@ -45,8 +49,8 @@ inputs.propTypes = {
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   updateInput: PropTypes.func.isRequired,
-  valid: PropTypes.bool.isRequired,
-  touched: PropTypes.bool.isRequired,
+  valid: PropTypes.bool,
+  touched: PropTypes.bool,
   errorText: PropTypes.string,
   muiProps: PropTypes.object
 };

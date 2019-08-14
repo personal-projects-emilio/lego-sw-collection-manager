@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { TextField, MenuItem } from "@material-ui/core";
 import SelectField from "../../../../commons/inputs/selectfield";
+import Inputs from "../../../../commons/inputs";
 
 export const filters = props => {
   const {
@@ -18,27 +18,18 @@ export const filters = props => {
     resetTag
   } = props;
 
-  const setShowHandler = e => {
-    const value = e.target.value;
-    value !== show && setShow(value);
-  };
   return (
     <>
-      <TextField
-        id="select-show-filter"
+      <Inputs
+        type="radiobuttons"
         label="Show"
-        select
         value={show}
-        variant="outlined"
-        fullWidth
-        onChange={setShowHandler}
-      >
-        {showOptions.map(option => (
-          <MenuItem key={`${option}-selectfield-choice`} value={option}>
-            {`${option[0].toUpperCase()}${option.slice(1)}`}
-          </MenuItem>
-        ))}
-      </TextField>
+        updateInput={setShow}
+        config={{
+          row: true,
+          options: showOptions
+        }}
+      />
       {characNames && (
         <SelectField
           value={characNameSelected}
