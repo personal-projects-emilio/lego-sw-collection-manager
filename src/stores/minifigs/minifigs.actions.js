@@ -53,16 +53,16 @@ export const deleteMinifig = reference => async (dispatch, getState) => {
   const action = {
     type: types.DELETE.MINIFIG,
     reference
-  }
+  };
   if (token) {
     try {
       await axios.delete(`/minifigs/${reference}.json`);
-      dispatch(checkTagAndCharacAfterDelete(reference));
-      dispatch(action);
+      await dispatch(action);
+      dispatch(checkTagAndCharacAfterDelete());
     } catch (err) {}
   } else {
-    dispatch(checkTagAndCharacAfterDelete(reference));
-    dispatch(action);
+    await dispatch(action);
+    dispatch(checkTagAndCharacAfterDelete());
   }
 };
 
