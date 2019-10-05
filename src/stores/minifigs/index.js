@@ -1,5 +1,5 @@
-import minifigsReducer from './reducer';
-import * as cases from './cases';
+import minifigsReducer from './minifigs.reducer';
+import * as cases from './minifigs.cases';
 export { cases };
 export {
   setMinifigs,
@@ -10,6 +10,6 @@ export {
   deleteMinifig,
   setPossessionToAll,
   addOrEditAMinifig
-} from './actions';
-export { types } from './types';
+} from './minifigs.actions';
+export { types } from './minifigs.types';
 export default minifigsReducer;

@@ -1,4 +1,4 @@
-import minifigFormReducer from './reducer';
+import minifigFormReducer from './minifig-form.reducer';
 export {
   setMinifigForm,
   updateInput,
@@ -6,6 +6,6 @@ export {
   setEditMinifigForm,
   resetMinifigForm,
   submitMinifigForm
-} from './actions';
-export { types } from './types';
+} from './minifig-form.actions';
+export { types } from './minifig-form.types';
 export default minifigFormReducer;

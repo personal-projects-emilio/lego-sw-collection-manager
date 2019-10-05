@@ -1,4 +1,4 @@
-import minifigsFilterReducer from './reducer'
+import minifigsFilterReducer from './minifigs-filter.reducer'
 export {
   setActivePage,
   setNumberPerPage,
@@ -10,6 +10,6 @@ export {
   manageSearchParams,
   resetFilters,
   checkTagAndCharacAfterDelete
-} from './actions';
-export { types } from './types';
+} from './minifigs-filter.actions';
+export { types } from './minifigs-filter.types';
 export default minifigsFilterReducer;

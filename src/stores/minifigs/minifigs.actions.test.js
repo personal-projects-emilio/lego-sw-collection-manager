@@ -1,7 +1,7 @@
 import { types } from ".";
 import axios from "../../axios";
 import MockAdapter from "axios-mock-adapter";
-import * as actions from "./actions";
+import * as actions from "./minifigs.actions";
 
 describe("actions/minifigs", () => {
   let dispatch;
@@ -133,21 +133,21 @@ describe("actions/minifigs", () => {
     await actions.deleteMinifig("sw0001")(dispatch, getState);
     expect(axiosDelete).toHaveBeenCalledWith("/minifigs/sw0001.json");
     expect(dispatch).toHaveBeenCalledTimes(2);
-    expect(dispatch).toHaveBeenNthCalledWith(2, {
+    expect(dispatch).toHaveBeenNthCalledWith(1, {
       type: types.DELETE.MINIFIG,
       reference: "sw0001"
     });
   });
-  it("should delete a minifig in the store when there is no auth", () => {
+  it("should delete a minifig in the store when there is no auth", async () => {
     const getState = jest.fn(() => ({
       auth: {
         token: null
       }
     }));
-    actions.deleteMinifig("sw0001")(dispatch, getState);
+    await actions.deleteMinifig("sw0001")(dispatch, getState);
     expect(axiosDelete).not.toHaveBeenCalled();
     expect(dispatch).toHaveBeenCalledTimes(2);
-    expect(dispatch).toHaveBeenNthCalledWith(2, {
+    expect(dispatch).toHaveBeenNthCalledWith(1, {
       type: types.DELETE.MINIFIG,
       reference: "sw0001"
     });
