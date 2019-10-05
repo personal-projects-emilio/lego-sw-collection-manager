@@ -1,5 +1,5 @@
-import * as actions from "./actions";
-import { types } from "./types";
+import * as actions from "./auth.actions";
+import { types } from "./auth.types";
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { push } from "connected-react-router";

@@ -1,5 +1,5 @@
 import { types } from '.';
-import * as actions from './actions';
+import * as actions from './minifigs-filter.actions';
 
 describe('minifigs-filter/action', () => {
     let dispatch;
@@ -90,6 +90,18 @@ describe('minifigs-filter/action', () => {
         actions.resetCharcNameSelected()(dispatch, getState);
         expect(getState).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenCalledTimes(2);
+    });
+    it('should set the tag', () => {
+        const getState = jest.fn(() => ({
+            router: {
+                location: {
+                    search: '?characterName=Boba+Fett&show=owned'
+                }
+            }
+        }))
+        actions.setTagSelected('Jedi')(dispatch, getState);
+        expect(getState).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(3);
     });
     it('should set the tag', () => {
         const getState = jest.fn(() => ({

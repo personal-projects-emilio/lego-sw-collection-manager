@@ -31,14 +31,15 @@ export const Minifigs = props => {
     return () => {
       resetFilters();
     };
-  }, [fetchMinifigs, manageSearchParams, minifigs, resetFilters]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (minifigs) {
       const minifigsList = Object.keys(minifigs)
         .filter(minifigRef => {
           const minifig = minifigs[minifigRef];
-          const possessed = minifig.possessed;
+          const { possessed } = minifig;
           // First we check the show filter
           if (
             show === "all" ||
@@ -49,8 +50,8 @@ export const Minifigs = props => {
             return characNameSelected
               ? characNameSelected === minifig.characterName
               : tagSelected && minifig.tags
-              ? minifig.tags.includes(tagSelected)
-              : !characNameSelected && !tagSelected;
+                ? minifig.tags.includes(tagSelected)
+                : !characNameSelected && !tagSelected;
           } else {
             return false;
           }
@@ -94,17 +95,17 @@ export const Minifigs = props => {
           </Grid>
         </>
       ) : (
-        <Typography align="center" variant="h6">
-          <p>There are no minifigs with those filters</p>
-          <Button variant="contained" onClick={props.resetFilters}>
-            Reset filters
+          <Typography align="center" variant="h6">
+            <p>There are no minifigs with those filters</p>
+            <Button variant="contained" onClick={props.resetFilters}>
+              Reset filters
           </Button>
-        </Typography>
-      )}
+          </Typography>
+        )}
     </Grid>
   ) : (
-    <Loader />
-  );
+      <Loader />
+    );
 };
 
 Minifigs.propTypes = {

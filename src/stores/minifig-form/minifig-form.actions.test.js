@@ -1,5 +1,5 @@
 import { types } from ".";
-import * as actions from "./actions";
+import * as actions from "./minifig-form.actions";
 import minifigForm from "../../templates/minifigForm";
 import axios from "../../axios";
 import MockAdapter from "axios-mock-adapter";
