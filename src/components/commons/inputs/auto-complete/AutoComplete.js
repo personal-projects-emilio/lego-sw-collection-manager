@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import CreatableSelect from 'react-select/creatable'
+import CreatableSelect from 'react-select/creatable';
+import Select from 'react-select'
 import isEqual from "lodash.isequal";
 import {
   Control,
@@ -10,6 +11,7 @@ import {
   ValueContainer,
   NoOptionsMessage
 } from "./components/Components";
+import { customStyles } from './Autocomplete.style';
 
 export const AutoComplete = props => {
   const {
@@ -31,42 +33,48 @@ export const AutoComplete = props => {
       const newValue = value.map(value => ({ label: value, value }));
       !isEqual(newValue, itemValue) && setItemValue(newValue);
     } else {
-      const newValue = value && { label: value, value: value };
+      const newValue = value && { label: value, value };
       !isEqual(newValue, itemValue) && setItemValue(newValue);
     }
   }, [value, config.multi, itemValue]);
 
   const changeHandler = (val, _action) => {
-    setItemValue(val);
-    !config.multi && inputChange(val ? val.value : '');
-    config.multi && inputChange(val.map(item => item.value));
+    setItemValue(val ? val : '');
+    if (config.multi) {
+      inputChange(val ? val.map(item => item.value) : []);
+    } else {
+      inputChange(val ? val.value : '');
+    }
   };
-  return (
-    <CreatableSelect
-      classes={classes}
-      isMulti={!!config.multi}
-      options={config.options}
-      isClearable
-      onChange={changeHandler}
-      value={itemValue}
-      placeholder={placeholder}
-      textFieldProps={{
-        ...muiProps,
-        label,
-        error: !valid && touched,
-        helperText: !valid && touched && errorText
-      }}
-      components={{
-        Control,
-        Option,
-        Menu,
-        MultiValue,
-        ValueContainer,
-        NoOptionsMessage
-      }}
-    />
-  );
+
+  const selectProps = {
+    classes,
+    styles: customStyles,
+    isMulti: !!config.multi,
+    options: config.options,
+    isClearable: true,
+    onChange: changeHandler,
+    value: itemValue,
+    placeholder,
+    textFieldProps: {
+      ...muiProps,
+      label,
+      error: !valid && touched,
+      helperText: !valid && touched && errorText
+    },
+    components: {
+      Control,
+      Option,
+      Menu,
+      MultiValue,
+      ValueContainer,
+      NoOptionsMessage
+    }
+  }
+
+  return !!config.creatable ? <CreatableSelect {...selectProps} /> : <Select {...selectProps} />;
 };
+
 AutoComplete.propTypes = {
   value: PropTypes.oneOfType([
     PropTypes.string,
