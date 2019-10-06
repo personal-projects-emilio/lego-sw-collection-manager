@@ -47,6 +47,7 @@
       "!src/setupTests.js",
       "!src/axios.js",
       "!src/**/*.container.{js,jsx}",
+      "!src/**/*.style.{js,jsx}",
       "!src/stores/**/types.{js,jsx}",
       "!src/**/index.{js,jsx}",
       "!src/**/theme.{js,jsx}",

@@ -1,5 +1,6 @@
 import React from 'react';
-import CreatableSelect from 'react-select/creatable'
+import CreatableSelect from 'react-select/creatable';
+import Select from 'react-select';
 import AutoComplete from './AutoComplete';
 import { shallow, mount } from 'enzyme';
 import { Chip } from '@material-ui/core';
@@ -16,7 +17,9 @@ describe('<AutoComplete />', () => {
       errorText: 'Test error text',
       valid: false,
       touched: true,
-      config: {},
+      config: {
+        creatable: true
+      },
       classes: {}
     }
   });
@@ -41,12 +44,15 @@ describe('<AutoComplete />', () => {
   });
   it('should manage the changes for multi autocomplete', () => {
     props.config.multi = true;
+    props.config.creatable = false;
     const wrapper = shallow(<AutoComplete {...props} />);
-    expect(wrapper.find(CreatableSelect)).toHaveLength(1);
-    wrapper.find(CreatableSelect).simulate('change', [
+    expect(wrapper.find(Select)).toHaveLength(1);
+    wrapper.find(Select).simulate('change', [
       {label: 'Yoda San', value: 'Yoda'},
       {label: 'Jedi Kun', value: 'Jedi'}
     ]);
     expect(props.inputChange).toHaveBeenCalledWith(['Yoda', 'Jedi']);
+    wrapper.find(Select).simulate('change', null);
+    expect(props.inputChange).toHaveBeenCalledWith([]);
   });
 });

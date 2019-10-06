@@ -41,7 +41,8 @@ export default {
     label: 'Character name',
     placeholder: 'Character name (ex: Battle Droid)',
     config: {
-      options: []
+      options: [],
+      creatable: true
     },
     validation: {
       required: true
@@ -65,7 +66,8 @@ export default {
     placeholder: 'Minifig tags (ex: Battle Droid, CIS, Droid)',
     config: {
       multi: true,
-      options: []
+      options: [],
+      creatable: true
     },
     validation: {},
     valid: true,
