@@ -45,55 +45,47 @@ export const setCharacNameSelected = characNameSelected => (
   dispatch,
   getState
 ) => {
-  const search = getState().router.location.search;
-  const params = new URLSearchParams(search);
-  // We set the characterName
-  params.set("characterName", characNameSelected);
-  // We delete the tag parameter if it exists
-  params.has("tag") && params.delete("tag");
-  // We obtain the new query search and push it
-  const newSearch = params.toString() && `?${params.toString()}`;
-  search !== newSearch && dispatch(push({ search: newSearch }));
-  dispatch({
-    type: types.SET.CHARACNAME_SELECTED,
-    characNameSelected
-  });
-  dispatch(checkActivePage("characNames", characNameSelected));
-};
-
-export const resetCharcNameSelected = () => (dispatch, getState) => {
   const { search } = getState().router.location;
   const params = new URLSearchParams(search);
-  params.delete("characterName");
-  dispatch(push({ search: `?${params.toString()}` }));
-  dispatch({ type: types.RESET.CHARACNAME_SELECTED });
+  if (characNameSelected) {
+    // We set the characterName
+    params.set("characterName", characNameSelected);
+    // We delete the tag parameter if it exists
+    params.has("tag") && params.delete("tag");
+    // We obtain the new query search and push it
+    dispatch({
+      type: types.SET.CHARACNAME_SELECTED,
+      characNameSelected
+    });
+    dispatch(checkActivePage("characNames", characNameSelected));
+  } else {
+    params.delete("characterName");
+    dispatch({ type: types.RESET.CHARACNAME_SELECTED });
+  }
+  const newSearch = params.toString() && `?${params.toString()}`;
+  search !== newSearch && dispatch(push({ search: newSearch }));
 };
 
 export const setTagSelected = tagSelected => (dispatch, getState) => {
-  const state = getState();
-  const { search } = state.router.location;
-  const params = new URLSearchParams(search);
-  // We set the tag
-  params.set("tag", tagSelected);
-  // We delete the characterName parameter if it exists
-  params.has("characterName") && params.delete("characterName");
-  // We obtain the new query search and push it
-  const newSearch = params.toString() && `?${params.toString()}`;
-  search !== newSearch && dispatch(push({ search: newSearch }));
-  dispatch({
-    type: types.SET.TAG_SELECTED,
-    tagSelected
-  });
-  dispatch(checkActivePage("tags", tagSelected));
-};
-
-export const resetTagSelected = () => (dispatch, getState) => {
   const { search } = getState().router.location;
   const params = new URLSearchParams(search);
-  params.delete("tag");
+  if (tagSelected) {
+    // We set the tag
+    params.set("tag", tagSelected);
+    // We delete the characterName parameter if it exists
+    params.has("characterName") && params.delete("characterName");
+    // We obtain the new query search and push it
+    dispatch({
+      type: types.SET.TAG_SELECTED,
+      tagSelected
+    });
+    dispatch(checkActivePage("tags", tagSelected));
+  } else {
+    params.delete("tag");
+    dispatch({ type: types.RESET.TAG_SELECTED });
+  }
   const newSearch = params.toString() && `?${params.toString()}`;
-  dispatch(push({ search: newSearch }));
-  dispatch({ type: types.RESET.TAG_SELECTED });
+  search !== newSearch && dispatch(push({ search: newSearch }));
 };
 
 export const manageSearchParams = () => (dispatch, getState) => {
@@ -134,8 +126,8 @@ export const manageSearchParams = () => (dispatch, getState) => {
 export const resetFilters = () => (dispatch, getState) => {
   const { minifigsFilter } = getState();
   minifigsFilter.show !== "all" && dispatch(setShow("all"));
-  minifigsFilter.tagSelected && dispatch(resetTagSelected());
-  minifigsFilter.characNameSelected && dispatch(resetCharcNameSelected());
+  minifigsFilter.tagSelected && dispatch(setTagSelected());
+  minifigsFilter.characNameSelected && dispatch(setCharacNameSelected());
 };
 
 export const checkTagAndCharacAfterDelete = () => (dispatch, getState) => {
@@ -146,10 +138,10 @@ export const checkTagAndCharacAfterDelete = () => (dispatch, getState) => {
   const data = getTagsAndCharacNames(minifigs);
   tagSelected &&
     data.tags.map(tag => tag.name).includes(tagSelected) &&
-    dispatch(resetTagSelected());
+    dispatch(setTagSelected());
   characNameSelected &&
     data.characNames
       .map(characName => characName.name)
       .includes(characNameSelected) &&
-    dispatch(resetCharcNameSelected());
+    dispatch(setCharacNameSelected());
 };

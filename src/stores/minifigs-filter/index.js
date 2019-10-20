@@ -5,8 +5,6 @@ export {
   setShow,
   setTagSelected,
   setCharacNameSelected,
-  resetTagSelected,
-  resetCharcNameSelected,
   manageSearchParams,
   resetFilters,
   checkTagAndCharacAfterDelete
