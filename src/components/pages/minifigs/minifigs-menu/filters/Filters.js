@@ -10,11 +10,9 @@ export const filters = props => {
     characNames,
     characNameSelected,
     setCharacName,
-    resetCharacName,
     tags,
     tagSelected,
     setTag,
-    resetTag
   } = props;
 
   return (
@@ -42,7 +40,7 @@ export const filters = props => {
               value: charac.name
             })),
           }}
-          updateInput={value => value ? setCharacName(value) : resetCharacName()}
+          updateInput={setCharacName}
           muiProps={{
             variant: 'outlined',
             InputLabelProps: {
@@ -63,7 +61,7 @@ export const filters = props => {
               value: tag.name
             })),
           }}
-          updateInput={value => value ? setTag(value) : resetTag()}
+          updateInput={setTag}
           muiProps={{
             variant: 'outlined',
             InputLabelProps: {
@@ -83,11 +81,9 @@ filters.propTypes = {
   tagSelected: PropTypes.string,
   tags: PropTypes.array,
   setTag: PropTypes.func.isRequired,
-  resetTag: PropTypes.func.isRequired,
   characNameSelected: PropTypes.string,
   characNames: PropTypes.array,
   setCharacName: PropTypes.func.isRequired,
-  resetCharacName: PropTypes.func.isRequired
 };
 
 export default filters;
