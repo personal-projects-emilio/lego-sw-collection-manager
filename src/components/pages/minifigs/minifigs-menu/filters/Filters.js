@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SelectField from "../../../../commons/inputs/selectfield";
 import Inputs from "../../../../commons/inputs";
 
 export const filters = props => {
@@ -31,27 +30,46 @@ export const filters = props => {
         }}
       />
       {characNames && (
-        <SelectField
+        <Inputs
+          type="autocomplete"
           value={characNameSelected}
+          className="padding10rem"
           label="Character Name"
-          options={characNames.map(charac => ({
-            displayed: `${charac.name} (${charac.amount})`,
-            value: charac.name
-          }))}
-          setValue={setCharacName}
-          resetValue={resetCharacName}
+          placeholder="Filter by character name"
+          config={{
+            options: characNames.map(charac => ({
+              label: `${charac.name} (${charac.amount})`,
+              value: charac.name
+            })),
+          }}
+          updateInput={value => value ? setCharacName(value) : resetCharacName()}
+          muiProps={{
+            variant: 'outlined',
+            InputLabelProps: {
+              shrink: true
+            },
+          }}
         />
       )}
       {tags && (
-        <SelectField
+        <Inputs
+          type="autocomplete"
           value={tagSelected}
           label="Tag"
-          options={tags.map(tag => ({
-            displayed: `${tag.name} (${tag.amount})`,
-            value: tag.name
-          }))}
-          setValue={setTag}
-          resetValue={resetTag}
+          placeholder="Filter by tag"
+          config={{
+            options: tags.map(tag => ({
+              label: `${tag.name} (${tag.amount})`,
+              value: tag.name
+            })),
+          }}
+          updateInput={value => value ? setTag(value) : resetTag()}
+          muiProps={{
+            variant: 'outlined',
+            InputLabelProps: {
+              shrink: true
+            },
+          }}
         />
       )}
     </>
