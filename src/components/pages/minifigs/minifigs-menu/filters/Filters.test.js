@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Filters from './Filters';
 import Inputs from "../../../../commons/inputs";
-import SelectField from '../../../../commons/inputs/selectfield';
 
 describe('<Filters />', () => {
   let props;
@@ -23,7 +22,14 @@ describe('<Filters />', () => {
   });
   it('should render the Filters section', () => {
     const wrapper = shallow(<Filters {...props} />);
-    expect(wrapper.find(Inputs)).toHaveLength(1);
-    expect(wrapper.find(SelectField)).toHaveLength(2);
+    expect(wrapper.find(Inputs)).toHaveLength(3);
+    wrapper.find(Inputs).at(1).props().updateInput();
+    expect(props.resetCharacName).toHaveBeenCalled();
+    wrapper.find(Inputs).at(1).props().updateInput('test');
+    expect(props.setCharacName).toHaveBeenCalled();
+    wrapper.find(Inputs).at(2).props().updateInput();
+    expect(props.resetTag).toHaveBeenCalled();
+    wrapper.find(Inputs).at(2).props().updateInput('test');
+    expect(props.setTag).toHaveBeenCalled();
   });
 });
