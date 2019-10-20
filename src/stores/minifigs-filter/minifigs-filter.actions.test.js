@@ -78,18 +78,25 @@ describe('minifigs-filter/action', () => {
         actions.setCharacNameSelected('Battle Droid')(dispatch, getState);
         expect(getState).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenCalledTimes(3);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+            type: types.SET.CHARACNAME_SELECTED,
+            characNameSelected: 'Battle Droid'
+        });
     });
     it('should reset the character name', () => {
         const getState = jest.fn(() => ({
             router: {
                 location: {
-                    search: '?characterName=Han+Solo'
+                    search: '?characterName=Battle Droid'
                 }
             }
         }))
-        actions.resetCharcNameSelected()(dispatch, getState);
+        actions.setCharacNameSelected()(dispatch, getState);
         expect(getState).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+            type: types.RESET.CHARACNAME_SELECTED,
+        });
     });
     it('should set the tag', () => {
         const getState = jest.fn(() => ({
@@ -102,31 +109,25 @@ describe('minifigs-filter/action', () => {
         actions.setTagSelected('Jedi')(dispatch, getState);
         expect(getState).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenCalledTimes(3);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+            type: types.SET.TAG_SELECTED,
+            tagSelected: 'Jedi'
+        });
     });
-    it('should set the tag', () => {
+    it('should reset the tag', () => {
         const getState = jest.fn(() => ({
             router: {
                 location: {
-                    search: '?characterName=Boba+Fett&show=owned'
+                    search: '?tag=CIS'
                 }
             }
         }))
-        actions.setTagSelected('Jedi')(dispatch, getState);
-        expect(getState).toHaveBeenCalledTimes(1);
-        expect(dispatch).toHaveBeenCalledTimes(3);
-    });
-    it('should reset the tag selected', () => {
-        const dispatch = jest.fn();
-        const getState = jest.fn(() => ({
-            router: {
-                location: {
-                    search: '?tag=CIS&show=missing'
-                }
-            }
-        }))
-        actions.resetTagSelected()(dispatch, getState)
+        actions.setTagSelected()(dispatch, getState);
         expect(getState).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+            type: types.RESET.TAG_SELECTED,
+        });
     });
     it('should manage the search parameters for characterName and show', () => {
         const getState = jest.fn(() => ({
