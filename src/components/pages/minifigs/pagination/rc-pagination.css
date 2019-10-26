@@ -29,7 +29,7 @@
 }
 .rc-pagination-item {
   cursor: pointer;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   min-width: 28px;
   height: 28px;
   line-height: 28px;
@@ -38,7 +38,8 @@
   float: left;
   border: 1px solid #d9d9d9;
   background-color: #fff;
-  margin-right: 8px;
+  /* margin-right: 8px; */
+  margin: 0 -0.5px;
 }
 .rc-pagination-item a {
   text-decoration: none;
@@ -129,10 +130,16 @@
   opacity: 1;
   color: #5d86bb;
 }
-.rc-pagination-prev,
+/* .rc-pagination-prev,
 .rc-pagination-jump-prev,
 .rc-pagination-jump-next {
   margin-right: 8px;
+} */
+.rc-pagination-prev {
+  margin-right: -0.5px;
+}
+.rc-pagination-next {
+  margin-left: -0.5px;
 }
 .rc-pagination-prev,
 .rc-pagination-next,
@@ -141,7 +148,7 @@
   cursor: pointer;
   color: #666;
   font-size: 10px;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   list-style: none;
   min-width: 28px;
   height: 28px;
@@ -191,7 +198,7 @@
   margin: 0 8px;
   box-sizing: border-box;
   background-color: #fff;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   border: 1px solid #d9d9d9;
   outline: none;
   padding: 3px 12px;
@@ -203,7 +210,7 @@
 }
 .rc-pagination-options-quick-jumper button {
   display: inline-block;
-  margin: 0 8px;
+  /* margin: 0 8px; */
   font-weight: 500;
   text-align: center;
   -ms-touch-action: manipulation;
@@ -214,7 +221,7 @@
   white-space: nowrap;
   padding: 0 15px;
   font-size: 12px;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   height: 28px;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -253,8 +260,9 @@
   margin: 0 8px;
   box-sizing: border-box;
   background-color: #fff;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   border: 1px solid #d9d9d9;
+  border-collapse: collapse;
   outline: none;
   padding: 5px 8px;
   min-height: 20px;
@@ -275,7 +283,7 @@
   white-space: nowrap;
   padding: 0 8px;
   font-size: 12px;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   height: 26px;
   -webkit-user-select: none;
      -moz-user-select: none;
