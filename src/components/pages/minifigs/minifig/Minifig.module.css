@@ -4,6 +4,10 @@
     max-height: 100%;
 }
 
+.pictureContainer {
+    max-height: 100%;
+}
+
 .paper {
     display: flex;
     text-align: center;

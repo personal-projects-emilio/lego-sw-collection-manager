@@ -10,7 +10,7 @@ describe('minifigsFilterReducer', () => {
                 nbPerPages: ['25', '50', '100', '200']
             },
             activePage: 1,
-            numberPerPage: 100,
+            numberPerPage: 50,
             show: 'all',
             tagSelected: null,
             characNameSelected: null

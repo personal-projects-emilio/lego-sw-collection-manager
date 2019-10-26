@@ -84,12 +84,11 @@ AutoComplete.propTypes = {
     multi: PropTypes.bool,
     options: PropTypes.array
   }),
-  inputKey: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   inputChange: PropTypes.func.isRequired,
-  valid: PropTypes.bool.isRequired,
-  touched: PropTypes.bool.isRequired,
+  valid: PropTypes.bool,
+  touched: PropTypes.bool,
   errorText: PropTypes.string,
   muiProps: PropTypes.object,
   classes: PropTypes.object
