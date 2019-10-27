@@ -7,6 +7,7 @@ import styles from "./Minifigs.module.css";
 import Loader from "../../commons/loader";
 import MinifigsMenu from "./minifigs-menu";
 import MinifigFormModal from "./minifig-form-modal";
+import { getFilteredMinifigs } from "../../../services/minifigs";
 
 export const Minifigs = props => {
   const {
@@ -36,29 +37,9 @@ export const Minifigs = props => {
 
   useEffect(() => {
     if (minifigs) {
-      const minifigsList = Object.keys(minifigs)
-        .filter(minifigRef => {
-          const minifig = minifigs[minifigRef];
-          const { possessed } = minifig;
-          // First we check the show filter
-          if (
-            show === "all" ||
-            (show === "owned" && possessed) ||
-            (show === "missing" && !possessed)
-          ) {
-            // Then we check the character name and tag filter
-            return characNameSelected
-              ? characNameSelected === minifig.characterName
-              : tagSelected && minifig.tags
-                ? minifig.tags.includes(tagSelected)
-                : !characNameSelected && !tagSelected;
-          } else {
-            return false;
-          }
-        })
-        .map(reference => ({ reference, ...minifigs[reference] }));
-      setCurrentMinifigs(minifigsList);
-      setTotal(minifigsList.length);
+      const filteredMinifigsList = getFilteredMinifigs(minifigs, show, characNameSelected, tagSelected)
+      setCurrentMinifigs(filteredMinifigsList);
+      setTotal(filteredMinifigsList.length);
     }
   }, [minifigs, tagSelected, characNameSelected, show]);
 
