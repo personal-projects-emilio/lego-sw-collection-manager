@@ -21,19 +21,50 @@ describe('minifigs-filter/action', () => {
     it('should set the active page if need be', () => {
         const getState = jest.fn(() => ({
             minifigs: {
-                tags: [{name: 'Droid', amount: 20}]
+                minifigs: {
+                    sw0001a: {
+                        tags: ['Droid'],
+                        characterName: 'Battle Droid',
+                        possessed: true,
+                    },
+                    sw0002: {
+                        tags: ['Anything'],
+                        characterName: 'Test',
+                        possessed: true,
+                    }
+                }
             },
             minifigsFilter: {
                 activePage: 2,
-                numberPerPage: 25
+                numberPerPage: 25,
+                show: 'owned',
+                tagSelected: null,
+                characNameSelected: null
             }
         }))
-        actions.checkActivePage('tags', 'Droid')(dispatch, getState);
+        actions.checkActivePage()(dispatch, getState);
         expect(getState).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenCalledWith({
             type: types.SET.ACTIVE_PAGE,
             activePage: 1
         });
+    });
+    it('should not do anything', () => {
+        const getState = jest.fn(() => ({
+            minifigs: {
+                minifigs: null
+            },
+            minifigsFilter: {
+                activePage: 2,
+                numberPerPage: 25,
+                show: 'owned',
+                tagSelected: null,
+                characNameSelected: null
+            }
+        }))
+        actions.checkActivePage()(dispatch, getState);
+        expect(getState).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(0);
     });
     it('should set show', () => {
         const getState = jest.fn(() => ({
@@ -45,7 +76,7 @@ describe('minifigs-filter/action', () => {
         }));
         actions.setShow('missing')(dispatch, getState);
         expect(getState).toHaveBeenCalledTimes(1);
-        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledTimes(3);
         expect(dispatch).toHaveBeenNthCalledWith(2, {
             type: types.SET.SHOW,
             show: 'missing'
@@ -61,7 +92,7 @@ describe('minifigs-filter/action', () => {
         }));
         actions.setShow('all')(dispatch, getState);
         expect(getState).toHaveBeenCalledTimes(1);
-        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledTimes(3);
         expect(dispatch).toHaveBeenNthCalledWith(2, {
             type: types.SET.SHOW,
             show: 'all'

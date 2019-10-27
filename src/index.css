@@ -24,3 +24,11 @@ code {
 .padding10rem {
   padding: 1rem 0;
 }
+
+.full-width {
+  width: 100%;
+}
+
+.text-start {
+  text-align: start;
+}

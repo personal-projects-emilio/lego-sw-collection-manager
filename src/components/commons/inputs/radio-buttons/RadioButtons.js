@@ -12,7 +12,7 @@ export const customRadioButtons = props => {
   const { value, inputChange, label, config } = props;
   return (
     <FormControl component="fieldset" fullWidth>
-      <FormLabel component="legend">{label}</FormLabel>
+      <FormLabel component="legend" className="text-start">{label}</FormLabel>
       <RadioGroup
         aria-label={label}
         name={label}
