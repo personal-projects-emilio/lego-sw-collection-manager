@@ -1,6 +1,6 @@
 import { types } from ".";
 import { push } from "connected-react-router";
-import { getTagsAndCharacNames } from "../../services/minifigs";
+import { getTagsAndCharacNames, getFilteredMinifigs } from "../../services/minifigs";
 
 export const setActivePage = activePage => ({
   type: types.SET.ACTIVE_PAGE,
@@ -23,23 +23,24 @@ export const setShow = show => (dispatch, getState) => {
   // We obtain the new query search and push it
   const newSearch = params.toString() && `?${params.toString()}`;
   search !== newSearch && dispatch(push({ search: newSearch }));
-
   dispatch({
     type: types.SET.SHOW,
     show
   });
+  dispatch(checkActivePage());
 };
 
-export const checkActivePage = (type, elSelected) => (dispatch, getState) => {
+export const checkActivePage = () => (dispatch, getState) => {
   const state = getState();
   const { minifigs } = state;
-  const { activePage, numberPerPage } = state.minifigsFilter;
-  const amount =
-    minifigs[type] && minifigs[type].find(el => el.name === elSelected).amount;
-  amount &&
-    amount < activePage * numberPerPage &&
-    dispatch(setActivePage(Math.ceil(amount / numberPerPage)));
-};
+  const { activePage, numberPerPage, show, tagSelected, characNameSelected } = state.minifigsFilter;
+  if (minifigs.minifigs) {
+    const filteredMinifigsList = getFilteredMinifigs(minifigs.minifigs, show, characNameSelected, tagSelected);
+    const amount = filteredMinifigsList.length;
+    amount && amount < activePage * numberPerPage &&
+      dispatch(setActivePage(Math.ceil(amount / numberPerPage)));
+  }
+}
 
 export const setCharacNameSelected = characNameSelected => (
   dispatch,
@@ -57,7 +58,7 @@ export const setCharacNameSelected = characNameSelected => (
       type: types.SET.CHARACNAME_SELECTED,
       characNameSelected
     });
-    dispatch(checkActivePage("characNames", characNameSelected));
+    dispatch(checkActivePage());
   } else {
     params.delete("characterName");
     dispatch({ type: types.RESET.CHARACNAME_SELECTED });
@@ -79,7 +80,7 @@ export const setTagSelected = tagSelected => (dispatch, getState) => {
       type: types.SET.TAG_SELECTED,
       tagSelected
     });
-    dispatch(checkActivePage("tags", tagSelected));
+    dispatch(checkActivePage());
   } else {
     params.delete("tag");
     dispatch({ type: types.RESET.TAG_SELECTED });
@@ -102,6 +103,11 @@ export const manageSearchParams = () => (dispatch, getState) => {
   characName && newParams.set("characterName", characName);
   characName && dispatch(setCharacNameSelected(characName));
 
+  // The same for the tag if there is no character name
+  const tag = params.get("tag");
+  tag && !characName && newParams.set("tag", tag);
+  tag && !characName && dispatch(setTagSelected(tag));
+
   // And we set show if it is one of the store options and not the default one ('all')
   const show = params.get("show");
   show &&
@@ -112,11 +118,6 @@ export const manageSearchParams = () => (dispatch, getState) => {
     showOptions.includes(show) &&
     show !== selectedShow &&
     newParams.set("show", show);
-
-  // The same for the tag if there is no character name
-  const tag = params.get("tag");
-  tag && !characName && newParams.set("tag", tag);
-  tag && !characName && dispatch(setTagSelected(tag));
 
   // We obtain the new search and push it if it's different
   const newSearch = newParams.toString() && `?${newParams.toString()}`;

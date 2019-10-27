@@ -18,14 +18,14 @@ export const minifigs = props => {
             alt={`${reference}-bricklink-png`}
           />
         </Grid>
-        <Grid item>
+        <Grid item className="full-width">
           <Typography>{reference.toUpperCase()}</Typography>
           <NameAndTags characterName={details.characterName} tags={details.tags} />
           <LogoLink reference={reference} type={'bricklink'} />
           <LogoLink reference={reference} type={'brickset'} />
           <Divider variant="fullWidth" />
         </Grid>
-        <Grid item>
+        <Grid item className="full-width">
           <Management reference={reference} details={details} />
         </Grid>
       </Grid>
