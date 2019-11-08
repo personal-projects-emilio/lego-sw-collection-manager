@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MinifigsMenu /> should render the Minifigs Menu 1`] = `
+<WithStyles(ForwardRef(Grid))
+  container={true}
+>
+  <WithStyles(ForwardRef(Grid))
+    item={true}
+    md={6}
+    xs={12}
+  >
+    <WithStyles(ForwardRef(Paper))
+      classes={
+        Object {
+          "root": "Paper",
+        }
+      }
+    >
+      <WithStyles(ForwardRef(Grid))
+        alignItems="center"
+        className="Container"
+        container={true}
+      >
+        <WithStyles(undefined) />
+      </WithStyles(ForwardRef(Grid))>
+    </WithStyles(ForwardRef(Paper))>
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    item={true}
+    md={6}
+    xs={12}
+  >
+    <WithStyles(ForwardRef(Paper))
+      classes={
+        Object {
+          "root": "Paper",
+        }
+      }
+    >
+      <WithStyles(ForwardRef(Grid))
+        className="Container"
+        container={true}
+      >
+        <Connect(filters) />
+      </WithStyles(ForwardRef(Grid))>
+    </WithStyles(ForwardRef(Paper))>
+  </WithStyles(ForwardRef(Grid))>
+</WithStyles(ForwardRef(Grid))>
+`;

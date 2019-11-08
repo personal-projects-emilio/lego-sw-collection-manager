@@ -1,0 +1,7 @@
+.selected {
+  background-color: rgba(93,134,187, 0.30) !important;
+}
+
+.root:hover {
+  background-color: rgba(93,134,187, 0.10) !important;
+}

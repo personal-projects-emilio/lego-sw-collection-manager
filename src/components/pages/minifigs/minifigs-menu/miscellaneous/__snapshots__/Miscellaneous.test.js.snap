@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Miscellaneous /> should render the miscellaneous part of the minifig menu 1`] = `
+<Fragment>
+  <WithStyles(ForwardRef(Grid))
+    item={true}
+    xs={12}
+  >
+    <WithStyles(ForwardRef(Typography))
+      align="center"
+      variant="subtitle1"
+    >
+      You possess 900 of the 1000 minifigs in our database
+    </WithStyles(ForwardRef(Typography))>
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    item={true}
+    xs={12}
+  >
+    <WithStyles(ForwardRef(Tooltip))
+      placement="top-end"
+      title="90%"
+    >
+      <WithStyles(ForwardRef(LinearProgress))
+        className="linearProgress"
+        value={90}
+        variant="determinate"
+      />
+    </WithStyles(ForwardRef(Tooltip))>
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    item={true}
+    xs={12}
+  >
+    <WithStyles(ForwardRef(Divider)) />
+    <WithStyles(ForwardRef(Typography))
+      display="inline"
+    >
+      Set possession to all:
+    </WithStyles(ForwardRef(Typography))>
+    <WithStyles(ForwardRef(Tooltip))
+      placement="top"
+      title="Set all the minifigs to owned"
+    >
+      <WithStyles(ForwardRef(Fab))
+        arial-label="set-all-to-possessed"
+        className="button"
+        color="primary"
+        onClick={[Function]}
+        size="small"
+      >
+        <WithStyles(ForwardRef(Icon))>
+          check_box
+        </WithStyles(ForwardRef(Icon))>
+      </WithStyles(ForwardRef(Fab))>
+    </WithStyles(ForwardRef(Tooltip))>
+    <WithStyles(ForwardRef(Tooltip))
+      placement="top"
+      title="Set all the minifigs to missing"
+    >
+      <WithStyles(ForwardRef(Fab))
+        arial-label="set-all-to-not-possessed"
+        className="button"
+        color="primary"
+        onClick={[Function]}
+        size="small"
+      >
+        <WithStyles(ForwardRef(Icon))>
+          check_box_outline_blank
+        </WithStyles(ForwardRef(Icon))>
+      </WithStyles(ForwardRef(Fab))>
+    </WithStyles(ForwardRef(Tooltip))>
+    <WithStyles(ForwardRef(Divider)) />
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    item={true}
+    xs={12}
+  >
+    <WithStyles(ForwardRef(Button))
+      className="button"
+      color="primary"
+      onClick={[MockFunction]}
+      variant="contained"
+    >
+      Add a minifig
+      <WithStyles(ForwardRef(Icon))
+        className="icon"
+      >
+        add_circle
+      </WithStyles(ForwardRef(Icon))>
+    </WithStyles(ForwardRef(Button))>
+    <WithStyles(ForwardRef(Button))
+      className="button"
+      color="primary"
+      download="minifigs.json"
+      href="data:text/json;charset=utf-8,undefined"
+      variant="contained"
+    >
+      Download minifigs
+      <WithStyles(ForwardRef(Icon))
+        className="icon"
+      >
+        cloud_download
+      </WithStyles(ForwardRef(Icon))>
+    </WithStyles(ForwardRef(Button))>
+  </WithStyles(ForwardRef(Grid))>
+</Fragment>
+`;

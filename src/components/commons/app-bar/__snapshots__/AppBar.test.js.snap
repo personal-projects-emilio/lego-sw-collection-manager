@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AppBar /> should render the AppBar 1`] = `
+<WithStyles(ForwardRef(AppBar))
+  color="default"
+  elevation={0}
+  position="sticky"
+>
+  <WithStyles(ForwardRef(Toolbar))
+    variant="dense"
+  >
+    <WithStyles(ForwardRef(Grid))
+      alignItems="center"
+      container={true}
+      justify="space-between"
+    >
+      <WithStyles(ForwardRef(Typography))
+        className="flex"
+        color="inherit"
+        variant="h6"
+      >
+        <img
+          alt="app-logo"
+          className="appLogo"
+          src="elephant.png"
+        />
+        <Hidden
+          smDown={true}
+        >
+          Lego SW Collection Manager
+        </Hidden>
+      </WithStyles(ForwardRef(Typography))>
+      <Hidden
+        mdDown={true}
+      >
+        <Connect(withRouter(TabMenu)) />
+      </Hidden>
+      <Hidden
+        lgUp={true}
+      >
+        <Connect(withRouter(BurgerNav)) />
+      </Hidden>
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Toolbar))>
+</WithStyles(ForwardRef(AppBar))>
+`;
