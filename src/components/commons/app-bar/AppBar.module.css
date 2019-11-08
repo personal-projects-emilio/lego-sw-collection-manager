@@ -1,0 +1,9 @@
+.appLogo {
+  height: 30px;
+  width: 30px;
+  margin-right: 0.5rem;
+}
+
+.flex {
+  display: flex;
+}

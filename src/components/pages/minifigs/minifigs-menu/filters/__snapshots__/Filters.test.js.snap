@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Filters /> should render the Filters section 1`] = `
+<Fragment>
+  <inputs
+    config={
+      Object {
+        "options": Array [
+          "all",
+          "owned",
+          "missing",
+        ],
+        "row": true,
+      }
+    }
+    label="Show"
+    type="radiobuttons"
+    updateInput={[MockFunction]}
+    value="all"
+  />
+  <inputs
+    className="padding10rem"
+    config={
+      Object {
+        "options": Array [
+          Object {
+            "label": "test (2)",
+            "value": "test",
+          },
+        ],
+      }
+    }
+    label="Character Name"
+    muiProps={
+      Object {
+        "InputLabelProps": Object {
+          "shrink": true,
+        },
+        "variant": "outlined",
+      }
+    }
+    placeholder="Filter by character name"
+    type="autocomplete"
+    updateInput={[MockFunction]}
+    value={null}
+  />
+  <inputs
+    config={
+      Object {
+        "options": Array [
+          Object {
+            "label": "test (2)",
+            "value": "test",
+          },
+        ],
+      }
+    }
+    label="Tag"
+    muiProps={
+      Object {
+        "InputLabelProps": Object {
+          "shrink": true,
+        },
+        "variant": "outlined",
+      }
+    }
+    placeholder="Filter by tag"
+    type="autocomplete"
+    updateInput={[MockFunction]}
+    value={null}
+  />
+</Fragment>
+`;
