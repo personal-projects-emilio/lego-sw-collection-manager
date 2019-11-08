@@ -1,7 +1,8 @@
 import React from 'react';
 import Miscellaneous from './Miscellaneous';
 import { shallow } from 'enzyme';
-import { Typography, LinearProgress, Grid, Tooltip, Button, Icon, Divider, Fab } from "@material-ui/core";
+import { Button, Fab } from "@material-ui/core";
+import toJson from 'enzyme-to-json';
 
 describe('<Miscellaneous />', () => {
   it('should render the miscellaneous part of the minifig menu', () => {
@@ -18,14 +19,7 @@ describe('<Miscellaneous />', () => {
       setAddMinifigForm: jest.fn()
     }
     const wrapper = shallow(<Miscellaneous {...props} />);
-    expect(wrapper.find(Grid)).toHaveLength(4);
-    expect(wrapper.find(Typography)).toHaveLength(2);
-    expect(wrapper.find(LinearProgress)).toHaveLength(1);
-    expect(wrapper.find(Tooltip)).toHaveLength(3);
-    expect(wrapper.find(Button)).toHaveLength(2);
-    expect(wrapper.find(Icon)).toHaveLength(4);
-    expect(wrapper.find(Divider)).toHaveLength(2);
-    expect(wrapper.find(Fab)).toHaveLength(2);
+    expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.find(Fab).at(0).simulate('click');
     expect(props.setPossessionToAll).toHaveBeenCalledWith(true);
     wrapper.find(Fab).at(1).simulate('click');

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Filters from './Filters';
-import Inputs from "../../../../commons/inputs";
+import toJson from 'enzyme-to-json';
 
 describe('<Filters />', () => {
   let props;
@@ -11,15 +11,15 @@ describe('<Filters />', () => {
       show: 'all',
       setShow: jest.fn(),
       tagSelected: null,
-      tags: [{name: 'test', amount: 2}],
+      tags: [{ name: 'test', amount: 2 }],
       setTag: jest.fn(),
       characNameSelected: null,
-      characNames: [{name: 'test', amount: 2}],
+      characNames: [{ name: 'test', amount: 2 }],
       setCharacName: jest.fn(),
     }
   });
   it('should render the Filters section', () => {
     const wrapper = shallow(<Filters {...props} />);
-    expect(wrapper.find(Inputs)).toHaveLength(3);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
