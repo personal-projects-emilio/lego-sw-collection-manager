@@ -1,72 +1,36 @@
 import React from "react";
-import PropTypes from "prop-types";
-import {
-  Grid,
-  Typography,
-  Toolbar,
-  AppBar,
-  Tabs,
-  Tab
-} from "@material-ui/core";
-import { Link } from "react-router-dom";
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Toolbar from '@material-ui/core/Toolbar';
+import AppBar from '@material-ui/core/AppBar';
+import Hidden from '@material-ui/core/Hidden';
+import appLogo from '../../../assets/images/app-logo/elephant.png';
+import styles from './AppBar.module.css';
+import BurgerNav from "./burger-nav";
+import TabMenu from "./tab-menu";
 
 export const appBar = props => (
   <AppBar position="sticky" color="default" elevation={0}>
-    <Toolbar>
+    <Toolbar variant="dense">
       <Grid
         container
         justify="space-between"
         alignItems="center"
-        className={props.classes.fullHeight}
       >
-        <Typography variant="h6" color="inherit">
-          Lego SW Collection Manager
+        <Typography variant="h6" color="inherit" className={styles.flex}>
+          <img alt="app-logo" src={appLogo} className={styles.appLogo} />
+          <Hidden smDown>Lego SW Collection Manager</Hidden>
         </Typography>
-        <Tabs
-          value={props.location.pathname}
-          classes={{
-            root: props.classes.fullHeight,
-            flexContainer: props.classes.fullHeight
-          }}
-        >
-          <Tab value="/" label="Home" component={Link} to="/" />
-          <Tab
-            value="/minifigs"
-            label="Minifigs"
-            component={Link}
-            to="/minifigs"
-          />
-          {props.authenticate ? (
-            <Tab
-              value="/logout"
-              label="Logout"
-              onClick={props.logout}
-            />
-          ) : (
-            <Tab
-              value="/auth"
-              label="Authentication"
-              component={Link}
-              to="/auth"
-              onClick={() => props.setAuthRedirectPath(props.location.pathname)}
-            />
-          )}
-        </Tabs>
+        <Hidden mdDown>
+          <TabMenu />
+        </Hidden>
+        <Hidden lgUp>
+          <BurgerNav />
+        </Hidden>
       </Grid>
     </Toolbar>
   </AppBar>
 );
 
-appBar.propTypes = {
-  classes: PropTypes.shape({
-    fullHeight: PropTypes.string.isRequired
-  }),
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired
-  }),
-  logout: PropTypes.func.isRequired,
-  setAuthRedirectPath: PropTypes.func.isRequired,
-  authenticate: PropTypes.string
-};
 
 export default appBar;
