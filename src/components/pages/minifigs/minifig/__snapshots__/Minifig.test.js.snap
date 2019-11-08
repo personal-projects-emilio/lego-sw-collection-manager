@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Minifig /> should render a minifig 1`] = `
+<WithStyles(ForwardRef(Paper))
+  className="paper"
+>
+  <WithStyles(ForwardRef(Grid))
+    className="container"
+    container={true}
+    direction="column"
+    justify="space-between"
+  >
+    <WithStyles(ForwardRef(Grid))
+      className="pictureContainer"
+      item={true}
+    >
+      <img
+        alt="sw0001-bricklink-png"
+        className="picture"
+        src="https://img.bricklink.com/ItemImage/MN/0/sw0001.png"
+      />
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      className="full-width"
+      item={true}
+    >
+      <WithStyles(ForwardRef(Typography))>
+        SW0001
+      </WithStyles(ForwardRef(Typography))>
+      <WithStyles(undefined)
+        characterName="Battle Droid"
+        tags={
+          Array [
+            "test",
+          ]
+        }
+      />
+      <logoLink
+        reference="sw0001"
+        type="bricklink"
+      />
+      <logoLink
+        reference="sw0001"
+        type="brickset"
+      />
+      <WithStyles(ForwardRef(Divider))
+        variant="fullWidth"
+      />
+    </WithStyles(ForwardRef(Grid))>
+    <WithStyles(ForwardRef(Grid))
+      className="full-width"
+      item={true}
+    >
+      <Connect(Management)
+        details={
+          Object {
+            "characterName": "Battle Droid",
+            "name": "test",
+            "possessed": true,
+            "tags": Array [
+              "test",
+            ],
+          }
+        }
+        reference="sw0001"
+      />
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
+</WithStyles(ForwardRef(Paper))>
+`;
