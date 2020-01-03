@@ -29,7 +29,7 @@ export const AutoComplete = props => {
   const [itemValue, setItemValue] = useState("");
 
   useEffect(() => {
-    if (config.multi) {
+    if (config.multi && value && Array.isArray(value)) {
       const newValue = value.map(value => ({ label: value, value }));
       !isEqual(newValue, itemValue) && setItemValue(newValue);
     } else {
